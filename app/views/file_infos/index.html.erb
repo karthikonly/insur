@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing File Infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Folder</th>
+      <th>Loc</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @file_infos.each do |file_info| %>
+      <tr>
+        <td><%= file_info.folder %></td>
+        <td><%= file_info.loc %></td>
+        <td><%= file_info.name %></td>
+        <td><%= link_to 'Show', file_info %></td>
+        <td><%= link_to 'Edit', edit_file_info_path(file_info) %></td>
+        <td><%= link_to 'Destroy', file_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New File info', new_file_info_path %>

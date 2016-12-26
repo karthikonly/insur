@@ -1,0 +1,38 @@
+<% folders_hash.each do |folder_name, child_hash| %>
+  <tr>
+    <td>
+      <p class='folder_name'>
+        <%= render partial: 'spacer', locals: {level: level} %>
+        <%= folder_name %>
+      </p>
+    </td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <% child_hash[:files].each do |file_info| %>
+  <tr>
+    <td>
+      <p class='file_name'>
+        <%= render partial: 'spacer', locals: {level: level+1} %>
+        <%= file_info.name %>
+      </p>
+    </td>
+    <td>
+      <%= file_info.type %>
+    </td>
+    <td>
+      <%= file_info.loc %>
+    </td>
+    <td>
+      <%= file_info.component.try(:name) %>
+    </td>
+    <td>
+      <%= file_info.review_done %>
+    </td>
+  </tr>
+  <% end %>
+  <%= render partial: 'folder', locals: {folders_hash: child_hash[:folders], level: level+1} %>
+<% end %>
+

@@ -1,2 +1,20 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h3>Filetype statistics</h3>
+
+<!-- code to show files in each file type 
+<%= @result_hash %>-->
+
+<h3> Folder </h3>
+<table class='simple'>
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>Type</th>
+      <th>Loc</th>
+      <th>Component</th>
+      <th>Reviewed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "folder", locals: {folders_hash: @result_hash, level: 0} %>
+  </tbody>
+</table>

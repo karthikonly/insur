@@ -69,6 +69,6 @@ class FileInfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def file_info_params
-      params.require(:file_info).permit(:folder, :loc, :name)
+      params.require(:file_info).permit(:folder, :loc, :name, :type, :review_done)
     end
 end

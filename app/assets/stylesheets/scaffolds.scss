@@ -71,3 +71,12 @@ div {
     list-style: square;
   }
 }
+
+table.simple {
+  border-collapse: collapse;
+  border: 1px solid gray;
+
+  th, td {
+    border: 1px solid gray;
+  }
+}

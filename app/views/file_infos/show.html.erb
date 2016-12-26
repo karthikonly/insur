@@ -6,13 +6,28 @@
 </p>
 
 <p>
+  <strong>Name:</strong>
+  <%= @file_info.name %>
+</p>
+
+<p>
+  <strong>Component:</strong>
+  <%= @file_info.component.try(:name) %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @file_info.type %>
+</p>
+
+<p>
   <strong>Loc:</strong>
   <%= @file_info.loc %>
 </p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @file_info.name %>
+  <strong>Review Done:</strong>
+  <%= @file_info.review_done %>
 </p>
 
 <%= link_to 'Edit', edit_file_info_path(@file_info) %> |

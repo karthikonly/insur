@@ -7,6 +7,7 @@
     <tr>
       <th>Folder</th>
       <th>Name</th>
+      <th>Component</th>
       <th>Type</th>
       <th>Loc</th>
       <th>Review Done</th>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= file_info.folder %></td>
         <td><%= file_info.name %></td>
+        <td><%= file_info.component.try(:name) %></td>
         <td><%= file_info.type %></td>
         <td><%= file_info.loc %></td>
         <td><%= file_info.review_done %></td>

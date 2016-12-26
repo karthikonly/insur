@@ -7,6 +7,8 @@ class FileInfo
   field :type, type: String
   field :review_done, type: Boolean
 
+  belongs_to  :component
+
   validates_presence_of     :name
   validates :folder, presence: true, allow_blank: true
 end

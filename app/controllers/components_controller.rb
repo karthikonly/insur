@@ -4,7 +4,7 @@ class ComponentsController < ApplicationController
   # GET /components
   # GET /components.json
   def index
-    @components = Component.all
+    @components = Component.includes(:file_infos).all
   end
 
   # GET /components/1
@@ -64,7 +64,7 @@ class ComponentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_component
-      @component = Component.find(params[:id])
+      @component = Component.includes(:file_infos).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

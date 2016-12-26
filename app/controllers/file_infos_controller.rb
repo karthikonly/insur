@@ -4,7 +4,7 @@ class FileInfosController < ApplicationController
   # GET /file_infos
   # GET /file_infos.json
   def index
-    @file_infos = FileInfo.all
+    @file_infos = FileInfo.includes(:component).all
   end
 
   # GET /file_infos/1
@@ -64,11 +64,11 @@ class FileInfosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_file_info
-      @file_info = FileInfo.find(params[:id])
+      @file_info = FileInfo.includes(:component).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def file_info_params
-      params.require(:file_info).permit(:folder, :loc, :name, :type, :review_done)
+      params.require(:file_info).permit(:folder, :loc, :name, :type, :review_done, :component_id)
     end
 end

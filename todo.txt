@@ -1,6 +1,7 @@
 todo:
 
-count total lines per filetype in mongo/rake
+dummy home page and action - done
+add component reference to file_info belongs_to: component - done
 
-add component reference to file_info belongs_to: component
+count total lines per filetype in home page through activerecord grouping
 show tree structure in home page

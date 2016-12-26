@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'home#index'
   resources :components
   resources :file_infos
   # The priority is based upon order of creation: first created -> highest priority.

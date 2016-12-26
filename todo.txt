@@ -1,0 +1,6 @@
+todo:
+
+count total lines per filetype in mongo/rake
+
+add component reference to file_info belongs_to: component
+show tree structure in home page

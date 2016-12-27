@@ -1,0 +1,14 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    alert('hello');
+    $(function() {
+      <%= #raw(@json_data) %>
+      var tree = [{ text: 1}];
+      $('<%= "#treeview12" %>').treeview({
+        data: tree
+      });
+    });
+  </script>
+<% end %>
+
+<div id="treeview" class=""></div>

@@ -16,7 +16,7 @@ class HomeController < ApplicationController
     folder_aggregate(@result_hash['/'])
   end
 
-  def bootstrap
+  def test_bootstrap
     @json_data = [
       {
         text: 'Parent 1',

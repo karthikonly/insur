@@ -24,7 +24,7 @@ folder partial changes DRY - done
 
 bootstrap integration - done
 
-bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/
+bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/ - ongoing
 
 expand and collapse folders
 

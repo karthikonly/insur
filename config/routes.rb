@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'home/bootstrap'
+  get 'home/test_bootstrap'
 
   resources :components
   resources :file_infos

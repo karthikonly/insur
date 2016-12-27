@@ -22,7 +22,7 @@ count total files at folder level in tree structure - done
 UI text changes - done
 folder partial changes DRY - done
 
-bootstrap integration
+bootstrap integration - done
 
 bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/
 

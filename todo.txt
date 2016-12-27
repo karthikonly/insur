@@ -29,4 +29,9 @@ bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/
 expand and collapse folders
 
 inline editing of the tree structure (only: reviewed, component) (not editable: name, folder, loc, type) with submit button
+
 auto save of the state using ajax
+
+user model with devise, sign up, login, logout, current_user
+
+menu nav bar, login and logout ui - https://rubyplus.com/articles/1371-Integrating-Twitter-Bootstrap-3-3-with-Rails-4-2-

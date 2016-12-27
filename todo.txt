@@ -16,11 +16,14 @@ count total lines per filetype in home page through mongoid/mongodb grouping - d
 count total lines per component and unassigned in home page - done
 count total lines per reviewed and non reviewed - done
 
-count total lines at folder level in tree structure
+count total lines at folder level in tree structure - done
+count total files at folder level in tree structure - done
 
 bootstrap integration
+
 bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/
+
 expand and collapse folders
 
-inline editing of the tree structure (only: reviewed, component) (not editable: name, folder, loc, type)
+inline editing of the tree structure (only: reviewed, component) (not editable: name, folder, loc, type) with submit button
 auto save of the state using ajax

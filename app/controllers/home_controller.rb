@@ -13,6 +13,7 @@ class HomeController < ApplicationController
     all_file_infos = FileInfo.includes(:component).all
     @result_hash = { '/' => { files: [], folders: {} } }
     build_file_info_hash(all_file_infos, @result_hash)
+    folder_aggregate(@result_hash['/'])
   end
 
   private
@@ -30,6 +31,21 @@ class HomeController < ApplicationController
       return_hash
     end
 
+    def folder_aggregate(hash)
+      total_lines = 0
+      total_files = 0
+      hash[:folders].each do |name, child_hash|
+        folder_aggregate(child_hash)
+        total_lines += child_hash[:total_lines]
+        total_files += child_hash[:total_files]
+      end
+      hash[:files].each do |fi|
+        total_lines += fi.loc
+      end
+      total_files += hash[:files].size
+      hash[:total_lines] = total_lines
+      hash[:total_files] = total_files
+    end
 
     def build_file_info_hash(all_file_infos, hash)
       all_file_infos.each do |fi|

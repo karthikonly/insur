@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Loc</title>
+  <title>Project Review Tool</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div id='header'>
-    <h1 align="center">Project Review Tool</h1>
-    <h2 align="center">Tool for reviewing, categorizing and processing lines of code.</h2>
+    <h1 align="center">Project Review Tool </h1>
+    <h2 align="center">Tool for reviewing, categorizing and counting lines in a project.</h2>
   </div>
-<%= yield %>
-
+  <%= yield %>
+  <div id='footer'>
+    <br/>
+    <h5 align="center">Written by Karthik L &lt;l.karthik@ericsson.com&gt; </h5>
+    <h5 align="center">&copy; All rights reserved</h5>
+  </div>
 </body>
 </html>

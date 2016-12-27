@@ -1,3 +1,17 @@
+<% unless header_defined %>
+  <table class='simple'>
+    <thead>
+      <tr>
+        <th>Path</th>
+        <th>Type/Files</th>
+        <th>Loc</th>
+        <th>Component</th>
+        <th>Reviewed</th>
+      </tr>
+    </thead>
+    <tbody>
+<% end %>
+
 <% folders_hash.each do |folder_name, child_hash| %>
   <tr>
     <td>
@@ -33,6 +47,10 @@
     </td>
   </tr>
   <% end %>
-  <%= render partial: 'folder', locals: {folders_hash: child_hash[:folders], level: level+1} %>
+  <%= render partial: 'folder', locals: {folders_hash: child_hash[:folders], level: level+1, header_defined: true} %>
 <% end %>
 
+<% unless header_defined %>
+    </tbody>
+  </table>
+<% end %>

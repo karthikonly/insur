@@ -7,18 +7,5 @@
 <h3>Filetype statistics</h3>
 <%= render partial: "stats", locals: {data_hash: @type_group_hash} %>
 
-<h3> Folder </h3>
-<table class='simple'>
-  <thead>
-    <tr>
-      <th>Path</th>
-      <th>Type/Files</th>
-      <th>Loc</th>
-      <th>Component</th>
-      <th>Reviewed</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render partial: "folder", locals: {folders_hash: @result_hash, level: 0} %>
-  </tbody>
-</table>
+<h3>Folderwise files</h3>
+<%= render partial: "folder", locals: {folders_hash: @result_hash, level: 0, header_defined: false} %>

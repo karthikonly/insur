@@ -19,6 +19,9 @@ count total lines per reviewed and non reviewed - done
 count total lines at folder level in tree structure - done
 count total files at folder level in tree structure - done
 
+UI text changes - done
+folder partial changes DRY - done
+
 bootstrap integration
 
 bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/

@@ -12,10 +12,11 @@ show line numbers in tree structure - done
 show component name in the tree structure - done
 show type and review done in tree structure - done
 
+count total lines per filetype in home page through mongoid/mongodb grouping - done
+count total lines per component and unassigned in home page - done
+count total lines per reviewed and non reviewed - done
+
 count total lines at folder level in tree structure
-count total lines per filetype in home page through activerecord grouping
-count total lines per component and unassigned in home page
-count total lines per reviewed and non reviewed
 
 bootstrap integration
 bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/

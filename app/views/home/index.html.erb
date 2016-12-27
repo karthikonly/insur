@@ -1,7 +1,11 @@
-<h3>Filetype statistics</h3>
+<h3>Reviewed statistics</h3>
+<%= render partial: "stats", locals: {data_hash: @review_done_group_hash} %>
 
-<!-- code to show files in each file type 
-<%= @result_hash %>-->
+<h3>Component statistics</h3>
+<%= render partial: "stats", locals: {data_hash: @component_group_hash} %>
+
+<h3>Filetype statistics</h3>
+<%= render partial: "stats", locals: {data_hash: @type_group_hash} %>
 
 <h3> Folder </h3>
 <table class='simple'>

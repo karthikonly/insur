@@ -1,0 +1,18 @@
+<table class='simple'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Files</th>
+      <th>Lines</th>
+    </tr>  
+  </thead>
+  <tbody>
+    <% data_hash.each do |key, value_hash| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value_hash[:count] %></td>
+        <td><%= value_hash[:lines] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

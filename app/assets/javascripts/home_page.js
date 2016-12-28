@@ -1,6 +1,6 @@
 $(function() {
   function success(data) {
-    $('div#treeview').treeview({data: data});
+    $('div#treeview').treeview(data);
   };
-  $.getJSON("/home/home_treeview_data", "", success);
+  $.getJSON("/home/treeview_data_json", "", success);
 });

@@ -13,10 +13,14 @@ class HomeController < ApplicationController
     @result_hash = generate_consolidated_data
   end
 
-  def home_treeview_data
-    @consolidated_data = generate_consolidated_data
-    @treeview_hash = add_folder_to_treeview([], '/', @consolidated_data['/'])
-    render json: @treeview_hash
+  def pretty_view
+    folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
+    @treeview_data = {data: folder_data, onhoverColor: '#A0A0A0', showTags: true}
+  end
+
+  def treeview_data_json
+    folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
+    render json: {data: folder_data, onhoverColor: '#A0A0A0', showTags: true}
   end
 
   def test_bootstrap
@@ -38,21 +42,39 @@ class HomeController < ApplicationController
       return_hash
     end
 
-    def generate_treeview_node(name, is_folder)
+    def generate_treeview_node(name, is_folder, data_source)
       @counter ||= 0
       @counter += 1
-      entry = { text: name, href: '#href'+@counter.to_s, tags: ['0'] }
-      entry[:nodes] = [] if is_folder
+      entry = { text: name, tags: [] }
+      if is_folder
+        entry[:href] = '#folder'+@counter.to_s
+        entry[:icon] = "glyphicon glyphicon-folder-close"
+        entry[:color] = "Blue"
+        entry[:nodes] = []
+        entry[:tags] << "#{data_source[:total_files]} files"
+        entry[:tags] << "#{data_source[:total_lines]} lines"
+      else
+        entry[:href] = data_source.id.to_s
+        entry[:icon] = "glyphicon glyphicon-file"
+        entry[:color] = "Green"
+        if data_source.component
+          entry[:tags] << "#{data_source.component.try(:name)}"
+        else
+          entry[:tags] << "Unassigned"
+        end
+        entry[:tags] << "#{data_source.type}"
+        entry[:tags] << "#{data_source.loc} lines"
+      end
       entry
     end
 
     def add_folder_to_treeview(treeview_data, folder_name, details_hash)
-      treeview_entry = generate_treeview_node(folder_name, true)
-      details_hash[:files].each do |fi|
-        treeview_entry[:nodes] << generate_treeview_node(fi.name, false)
-      end
+      treeview_entry = generate_treeview_node(folder_name, true, details_hash)
       details_hash[:folders].each do |key, value|
         add_folder_to_treeview(treeview_entry[:nodes], key, value)
+      end
+      details_hash[:files].each do |fi|
+        treeview_entry[:nodes] << generate_treeview_node(fi.name, false, fi)
       end
       treeview_data << treeview_entry
     end

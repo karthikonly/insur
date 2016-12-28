@@ -25,17 +25,17 @@ move assets to vendor - done
 move preloaded assets to new folder - done
 
 bootstrap integration - done
-
 bootstrap treeview integration - http://jonmiles.github.io/bootstrap-treeview/ - done
+bootstrap treeview show tags for component, loc at folder and file level - done
 
-bootstrap treeview show tags for component, loc at folder and file level- ongoing
+
+lineview: inline editing of the tree structure (make it form) (only: reviewed, component) with submit button
+
+lineview: auto save of the state using ajax
+
+
 
 lineview: expand and collapse folders
-lineview: inline editing of the tree structure (make it form) (only: reviewed, component) (not editable: name, folder, loc, type) with submit button
-
-
-
-auto save of the state using ajax
 
 user model with devise, sign up, login, logout, current_user
 

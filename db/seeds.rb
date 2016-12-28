@@ -32,7 +32,8 @@ Component_list = [
   'Service API',
   'AMI API',
   'Common',
-  'Test'
+  'Test',
+  'RoR Framework'
 ]
 
 def load_components

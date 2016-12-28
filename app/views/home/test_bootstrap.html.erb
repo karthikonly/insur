@@ -1,9 +1,5 @@
 <% content_for :head do %>
-  <script type="text/javascript">
-    $(function(){
-      alert('hello');
-    });
-  </script>
+  <%= javascript_include_tag :home_page %>
 <% end %>
 
-<div id="treeview" class="">content</div>
+<div id="treeview" class="col-sm-6">treeview-content</div>

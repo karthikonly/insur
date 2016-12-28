@@ -25,8 +25,7 @@ folder partial changes DRY - done
 bootstrap integration - done
 
 bootstrap treeview - http://jonmiles.github.io/bootstrap-treeview/ - ongoing
-
-expand and collapse folders
+expand and collapse folders - part of treeview
 
 inline editing of the tree structure (only: reviewed, component) (not editable: name, folder, loc, type) with submit button
 

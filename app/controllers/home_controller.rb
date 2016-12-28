@@ -17,6 +17,9 @@ class HomeController < ApplicationController
   end
 
   def test_bootstrap
+  end
+
+  def data_bootstrap
     @json_data = [
       {
         text: 'Parent 1',
@@ -68,6 +71,7 @@ class HomeController < ApplicationController
         tags: ['0']
       }
     ]
+    render json: @json_data
   end
 
   private

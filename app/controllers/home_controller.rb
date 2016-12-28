@@ -18,6 +18,10 @@ class HomeController < ApplicationController
     @treeview_data = {data: folder_data, onhoverColor: '#A0A0A0', showTags: true}
   end
 
+  def form_view
+    @result_hash = generate_consolidated_data
+  end
+
   def treeview_data_json
     folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
     render json: {data: folder_data, onhoverColor: '#A0A0A0', showTags: true}

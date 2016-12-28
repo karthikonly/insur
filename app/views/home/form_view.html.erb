@@ -1,0 +1,9 @@
+<div class="col-sm-8">
+  <h3>Update Component and Review Status</h3>
+  <%= form_tag('/file_infos/multi_update', method: :post) do %>
+    <table class='simple'>
+      <tr><td><%= submit_tag("Submit") %></td></tr>
+    </table>
+    <%= render partial: "update_form", locals: {folders_hash: @result_hash, level: 0, header_defined: false} %>
+  <% end %>
+</div>

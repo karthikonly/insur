@@ -1,5 +1,6 @@
 class FileInfosController < ApplicationController
   before_action :set_file_info, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:multi_update]
 
   # GET /file_infos
   # GET /file_infos.json
@@ -19,6 +20,33 @@ class FileInfosController < ApplicationController
 
   # GET /file_infos/1/edit
   def edit
+  end
+
+  # POST /file_infos/multi_update
+  # POST /file_infos/multi_update.json
+  def multi_update
+    errors = false
+    return_value = []
+    file_infos_params = params.permit(file_infos: [:id, :review_done, :component_id]).require(:file_infos)
+    file_infos_params.each do |file_info_entry|
+      (return_value << nil) and (errors = true) and next unless file_info_entry[:id]
+      file_info = FileInfo.find(file_info_entry[:id])
+      (return_value << nil) and (errors = true) and next unless file_info
+      if file_info.update(file_info_entry)
+        return_value << file_info_entry
+      else
+        return_value << file_info.errors
+        errors = true
+      end
+    end
+    respond_to do |format|
+      format.json { render json: return_value }
+      if errors
+        format.html { redirect_to :back, notice: 'Some entries have errors'}
+      else
+        format.html { redirect_to :back }
+      end
+    end
   end
 
   # POST /file_infos

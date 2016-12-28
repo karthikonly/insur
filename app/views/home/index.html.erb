@@ -1,11 +1,20 @@
-<h3>Reviewed statistics</h3>
-<%= render partial: "stats", locals: {data_hash: @review_done_group_hash} %>
+<div class="col-sm-8">
+  <h3>Folderwise files</h3>
+  <%= render partial: "folder", locals: {folders_hash: @result_hash, level: 0, header_defined: false} %>
+</div>
 
-<h3>Component statistics</h3>
-<%= render partial: "stats", locals: {data_hash: @component_group_hash} %>
+<div class="col-sm-4">
+  <h3>Reviewed statistics</h3>
+  <%= render partial: "stats", locals: {data_hash: @review_done_group_hash} %>
+</div>
 
-<h3>Filetype statistics</h3>
-<%= render partial: "stats", locals: {data_hash: @type_group_hash} %>
+<div class="col-sm-4">
+  <h3>Component statistics</h3>
+  <%= render partial: "stats", locals: {data_hash: @component_group_hash} %>
+</div>
 
-<h3>Folderwise files</h3>
-<%= render partial: "folder", locals: {folders_hash: @result_hash, level: 0, header_defined: false} %>
+<div class="col-sm-4">
+  <h3>Filetype statistics</h3>
+  <%= render partial: "stats", locals: {data_hash: @type_group_hash} %>
+</div>
+

@@ -20,6 +20,8 @@ class HomeController < ApplicationController
 
   def form_view
     @result_hash = generate_consolidated_data
+    @components = Component.all
+    @file_count = 0
   end
 
   def treeview_data_json

@@ -26,6 +26,9 @@
     <td></td>
   </tr>
   <% child_hash[:files].each do |file_info| %>
+  <%= fields_for "file_infos[#{@file_count}]", file_info do |fi| %>
+  <% @file_count += 1 %>
+  <%= fi.hidden_field :id %>
   <tr>
     <td>
       <p class='file_name'>
@@ -40,14 +43,15 @@
       <%= file_info.loc %>
     </td>
     <td>
-      <%= file_info.component.try(:name) %>
+      <%= fi.select 'component_id', @components.all.collect{|x| [x.name, x.id]}.unshift(["",nil]) %>
     </td>
     <td>
-      <%= file_info.review_done %>
+      <%= fi.check_box(:review_done) %>
     </td>
   </tr>
   <% end %>
-  <%= render partial: 'folder', locals: {folders_hash: child_hash[:folders], level: level+1, header_defined: true} %>
+  <% end %>
+  <%= render partial: 'update_form', locals: {folders_hash: child_hash[:folders], level: level+1, header_defined: true} %>
 <% end %>
 
 <% unless header_defined %>

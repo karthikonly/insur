@@ -28,15 +28,13 @@ bootstrap integration - done
 bootstrap treeview integration - http://jonmiles.github.io/bootstrap-treeview/ - done
 bootstrap treeview show tags for component, loc at folder and file level - done
 
+lineview: inline editing of the tree structure (make it form) (only: reviewed, component) with submit button - done
+lineview: auto save of the state using ajax - done
 
-lineview: inline editing of the tree structure (make it form) (only: reviewed, component) with submit button
-
-lineview: auto save of the state using ajax
+treeview: update review and component through ajax
 
 
+later: user model with devise, sign up, login, logout, current_user
+bootstrap: menu nav bar, login and logout ui - https://rubyplus.com/articles/1371-Integrating-Twitter-Bootstrap-3-3-with-Rails-4-2-
 
-lineview: expand and collapse folders
-
-user model with devise, sign up, login, logout, current_user
-
-menu nav bar, login and logout ui - https://rubyplus.com/articles/1371-Integrating-Twitter-Bootstrap-3-3-with-Rails-4-2-
+later: lineview: expand and collapse folders

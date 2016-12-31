@@ -28,7 +28,7 @@ class FileInfosController < ApplicationController
     errors = false
     return_value = []
     file_infos_params = params.permit(file_infos: [:id, :review_done, :component_id]).require(:file_infos)
-    file_infos_params.each do |file_info_entry|
+    file_infos_params.each do |key, file_info_entry|
       (return_value << nil) and (errors = true) and next unless file_info_entry[:id]
       file_info = FileInfo.find(file_info_entry[:id])
       (return_value << nil) and (errors = true) and next unless file_info

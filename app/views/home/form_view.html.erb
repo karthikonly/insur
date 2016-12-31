@@ -1,6 +1,10 @@
+<% content_for :head do %>
+  <%= javascript_include_tag :home_page %>
+<% end %>
+
 <div class="col-sm-8">
   <h3>Update Component and Review Status</h3>
-  <%= form_tag('/file_infos/multi_update', method: :post) do %>
+  <%= form_tag('/file_infos/multi_update', method: :post, id: 'multi_update') do %>
     <table class='simple'>
       <tr><td><%= submit_tag("Submit") %></td></tr>
     </table>

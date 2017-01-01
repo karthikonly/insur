@@ -15,28 +15,60 @@ function nodeSelectionHandler(event, node) {
   $('table.property select#component').val(node.component_id);
 }
 
+function treeDataHandler(data, status) {
+  // alert('Tree Update Status: ' + status);
+  $('div#treeview').treeview(data);
+  $('#treeview').on('nodeSelected', nodeSelectionHandler);
+  $('#treeview').treeview('selectNode', [selected_node.nodeId, { silent: true}]);
+  var node = selected_node;
+  while(node)
+  {
+    $('#treeview').treeview('expandNode', [node.nodeId, { silent: true}]);
+    node = $('#treeview').treeview('getParent', node);
+  }
+};
+
 function multiUpdatePostHandler(data, status) {
-  alert('Status: ' + status);
+  // alert('Update Status: ' + status);
+  $.getJSON("/home/treeview_data_json", "", treeDataHandler);
+}
+
+function add_nodes_to_data_hash(data_hash, nodes, counter, review_done, component_id) {
+  counter = 0;
+  node = nodes.pop();
+  while(node) {
+    console.log(node.text);
+    if (!node.is_folder) {
+      data_hash[counter.toString()] = {
+        id: node.href,
+        review_done: review_done,
+        component_id: component_id
+      }
+      counter++;
+    }
+    else {
+      // console.log(node.nodes);
+      nodes.push.apply(nodes, node.nodes);
+    }
+    node = nodes.pop();
+  }
+  // alert(selected_node.text + " is folder. not handled now.");
 }
 
 function clickHandler() {
   if (!selected_node) {
     alert('Make a selection first');
+    return;
   }
-  else if(selected_node.is_folder) {
-    alert(selected_node.text + " is folder. not handled now.");
-  }
-  else {
-    $.post(
-      "/file_infos/multi_update",
-      {
-        file_infos: {
-          '0': { id: '585d104fb88b40ae57e86da0', review_done: true, component_id: '585d0af8b88b40a8c69b83ad'}
-        }
-      },
-      multiUpdatePostHandler
-    );
-    alert("file:" + selected_node.text);
-  }
-
+  // console.log(selected_node);
+  update_data = new Object();
+  review_done = $('table.property #reviewed').prop('checked');
+  component_id = $('table.property select#component').val();
+  add_nodes_to_data_hash(update_data, [selected_node], 0, review_done, component_id);
+  // console.log(update_data);
+  $.post(
+    "/file_infos/multi_update",
+    { file_infos: update_data },
+    multiUpdatePostHandler
+  );
 }

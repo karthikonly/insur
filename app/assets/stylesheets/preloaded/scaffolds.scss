@@ -111,10 +111,12 @@ div#treeview span.badge {
   background-color: teal;
 }
 
-div#treeview span.first {
-  background-color: BlueViolet;
-}
-
-div#treeview span.second {
-  background-color: DarkSlateBlue;
+div#properties {
+  position: fixed;
+  top: 120px;
+  left: 950px;
+  border: 3px solid DarkTurquoise;
+  td {
+    padding: 8px;
+  }
 }

@@ -7,3 +7,30 @@
 <% end %>
 
 <div id="treeview" class="col-sm-6">treeview-content</div>
+<div id="properties" class="col-sm-4">
+  <table class="property">
+  <tr>
+    <td colspan="3"><h3>Update: <span id='obj_name'></span></h3></td>
+  </tr>
+  <tr>
+    <td>Folder:</td>
+    <td colspan='2' id='is_folder'></td>
+  </tr>
+  <tr>
+    <td>Loc:</td>
+    <td colspan='2' id='loc'></td>
+  </tr>
+  <tr>
+    <td>Files:</td>
+    <td colspan='2' id='files'></td>
+  </tr>
+  <tr>
+    <td> Reviewed: <%= check_box_tag :reviewed %></td>
+    <td colspan="2"> <%= select_tag :component, options_for_select(@component_list)%> </td>
+  </tr>
+  <tr>
+    <td> <%= button_tag("Change", id: 'change') %></td>
+    <td colspan="2"></td>
+  </tr>
+  </table>
+</div>

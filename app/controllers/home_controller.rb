@@ -63,6 +63,10 @@ class HomeController < ApplicationController
         entry[:tags] << "#{data_source[:total_files]} files"
         entry[:tags] << "#{data_source[:total_lines]} lines"
         entry[:is_folder] = true
+        entry[:loc] = data_source[:total_lines]
+        entry[:files] = data_source[:total_files]
+        entry[:reviewed] = false
+        entry[:component_id] = nil
       else
         entry[:href] = '#'+data_source.id.to_s
         entry[:icon] = "glyphicon glyphicon-file"
@@ -75,6 +79,10 @@ class HomeController < ApplicationController
         entry[:tags] << "#{data_source.type}"
         entry[:tags] << "#{data_source.loc} lines"
         entry[:is_folder] = false
+        entry[:loc] = data_source.loc
+        entry[:files] = 1
+        entry[:reviewed] = data_source.review_done
+        entry[:component_id] = data_source.component_id.to_s
       end
       entry
     end

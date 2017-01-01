@@ -14,8 +14,8 @@ class HomeController < ApplicationController
   end
 
   def pretty_view
-    folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
-    @treeview_data = {data: folder_data, onhoverColor: '#A0A0A0', showTags: true}
+    @treeview_data = treeview_data
+    @component_list = Component.all.collect{|x| [x.name, x.id.to_s]}.unshift(["", nil])
   end
 
   def form_view
@@ -25,14 +25,17 @@ class HomeController < ApplicationController
   end
 
   def treeview_data_json
-    folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
-    render json: {data: folder_data, onhoverColor: '#A0A0A0', showTags: true}
+    render json: treeview_data
   end
 
   def test_bootstrap
   end
 
   private
+    def treeview_data
+      folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
+      { onhoverColor: '#A0A0A0', showTags: true, enableLinks: true, data: folder_data }
+    end
 
     def build_aggregation(property)
       property = property.to_s
@@ -60,7 +63,7 @@ class HomeController < ApplicationController
         entry[:tags] << "#{data_source[:total_files]} files"
         entry[:tags] << "#{data_source[:total_lines]} lines"
       else
-        entry[:href] = data_source.id.to_s
+        entry[:href] = '#'+data_source.id.to_s
         entry[:icon] = "glyphicon glyphicon-file"
         entry[:color] = "Green"
         if data_source.component

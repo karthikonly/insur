@@ -1,9 +1,8 @@
 <% content_for :head do %>
+  <%= javascript_include_tag :pretty_view %>
   <script type="text/javascript">
     var treeview_data = <%= raw(@treeview_data.to_json) %>;
-    $(function() {
-      $('div#treeview').treeview(treeview_data);
-    });
+    var component_list = <%= raw(@component_list.to_json) %>;
   </script>
 <% end %>
 

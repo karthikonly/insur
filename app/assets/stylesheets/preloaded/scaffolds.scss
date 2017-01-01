@@ -107,6 +107,14 @@ table.simple {
   padding-top:20px;
 }
 
-div.treeview span.badge {
+div#treeview span.badge {
   background-color: teal;
+}
+
+div#treeview span.first {
+  background-color: BlueViolet;
+}
+
+div#treeview span.second {
+  background-color: DarkSlateBlue;
 }

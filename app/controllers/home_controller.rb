@@ -34,7 +34,7 @@ class HomeController < ApplicationController
   private
     def treeview_data
       folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
-      { onhoverColor: '#A0A0A0', showTags: true, enableLinks: true, data: folder_data }
+      { onhoverColor: '#A0A0A0', showTags: true, data: folder_data }
     end
 
     def build_aggregation(property)
@@ -62,6 +62,7 @@ class HomeController < ApplicationController
         entry[:nodes] = []
         entry[:tags] << "#{data_source[:total_files]} files"
         entry[:tags] << "#{data_source[:total_lines]} lines"
+        entry[:is_folder] = true
       else
         entry[:href] = '#'+data_source.id.to_s
         entry[:icon] = "glyphicon glyphicon-file"
@@ -73,6 +74,7 @@ class HomeController < ApplicationController
         end
         entry[:tags] << "#{data_source.type}"
         entry[:tags] << "#{data_source.loc} lines"
+        entry[:is_folder] = false
       end
       entry
     end

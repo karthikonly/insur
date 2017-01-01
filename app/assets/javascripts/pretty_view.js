@@ -1,17 +1,9 @@
 $(function() {
   $('div#treeview').treeview(treeview_data);
+  $('#treeview').on('nodeSelected', nodeSelectionHandler);
 });
 
-$(function() {
-  $('div#treeview a').on('click', function(e) {
-    e.preventDefault();
-    alert($(this).text());
-  });
-});
+function nodeSelectionHandler(event, node) {
+  alert([node.is_folder, node.href, node.text, node.icon].join());
+}
 
-  // $("div#treeview span.badge").delay(500).filter(function(index, element) {
-  //   return index == 0;
-  // }).addClass('first');
-  // $("div#treeview span.badge").filter(function(index, element) {
-  //   return index == 1;
-  // }).addClass('second');

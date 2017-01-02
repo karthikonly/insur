@@ -1,0 +1,26 @@
+<table class='simple'>
+  <thead>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th colspan="2">Reviewed</th>
+      <th colspan="2">Not Reviewed</th>
+    </tr>
+    <tr>
+      <th>Files</th>
+      <th>Lines</th>
+      <th>Files</th>
+      <th>Lines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% data_hash.each do |key, value_hash| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value_hash[true].try(:[], :count) %></td>
+        <td><%= value_hash[true].try(:[], :lines) %></td>
+        <td><%= value_hash[false].try(:[], :count) %></td>
+        <td><%= value_hash[false].try(:[], :lines) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

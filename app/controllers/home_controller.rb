@@ -1,16 +1,20 @@
 class HomeController < ApplicationController
   def index
-    # build aggregation based on filetype
-    @type_group_hash = build_aggregation(:type)
+    # build aggregation based on filetype and reviewed
+    @type_compound_hash = build_nested_aggregation(:type, :review_done)
 
     # build aggregation based on reviewed
-    @review_done_group_hash = build_aggregation(:review_done)
+    name_map_hash = { false => 'Not Reviewed', true => 'Reviewed'}
+    @review_done_group_hash = build_aggregation(:review_done, name_map_hash)
 
     # build aggregation based on component
-    @component_group_hash = build_aggregation(:component_id)
+    name_map_hash = { nil => 'Unassigned'}
+    Component.all.each { |x| name_map_hash[x.id] = x.name }
+    @component_group_hash = build_aggregation(:component_id, name_map_hash)
 
-    # build detailed result hash for main view construction
-    @result_hash = generate_consolidated_data
+    # treeview construction data
+    @treeview_data = treeview_data
+    @component_list = Component.all.collect{|x| [x.name, x.id.to_s]}.unshift(["", nil])
   end
 
   def pretty_view
@@ -28,16 +32,29 @@ class HomeController < ApplicationController
     render json: treeview_data
   end
 
-  def test_bootstrap
-  end
-
   private
     def treeview_data
       folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])
       { onhoverColor: '#A0A0A0', showTags: true, data: folder_data }
     end
 
-    def build_aggregation(property)
+    def build_nested_aggregation(property1, property2)
+      prop1 = property1.to_s
+      prop2 = property2.to_s
+      aggregation_object = FileInfo.collection.aggregate([{ "$group": {
+        "_id": { prop1 => '$'+prop1, prop2 => '$'+prop2 },
+        "count": { "$sum": 1 },
+        "lines": { "$sum": "$loc"}
+        } }])
+      return_hash = {}
+      aggregation_object.each do |result|
+        return_hash[result['_id'][prop1]] ||= {}
+        return_hash[result['_id'][prop1]][result['_id'][prop2]] = {count: result["count"], lines: result["lines"]}
+      end
+      return_hash
+    end
+
+    def build_aggregation(property, name_map_hash = nil)
       property = property.to_s
       return_hash = {}
       aggregation_object = FileInfo.collection.aggregate([{ "$group": { 
@@ -46,7 +63,8 @@ class HomeController < ApplicationController
         "lines": { "$sum": "$loc"}
         } }])
       aggregation_object.each do |result|
-        return_hash[result["_id"][property]] = {count: result["count"], lines: result["lines"]} 
+        key = name_map_hash ? name_map_hash[result["_id"][property]] : result["_id"][property]
+        return_hash[key] = {count: result["count"], lines: result["lines"]}
       end
       return_hash
     end

@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'home/treeview_data_json'
   get 'home/pretty_view'
   get 'home/form_view'
-  get 'home/test_bootstrap'
+  get 'home/treeview_data_json'
 
   resources :components
   resources :file_infos

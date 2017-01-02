@@ -1,28 +1,31 @@
-== README
+== Project Review Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Ruby on Rails project is to track the review status of any given project under top root folder.
 
-Things you may want to cover:
+This projects tracks Lines of Code, Review status of each file in the root folder.
 
-* Ruby version
+Operations supported in this project:
 
-* System dependencies
+* Create Components
 
-* Configuration
+* Create FileInfo objects representing each file under the root folder
 
-* Database creation
+* Assign components to files
 
-* Database initialization
+* Assign review status to files
 
-* How to run the test suite
+* Find consolidated report based on file type, review status, components.
 
-* Services (job queues, cache servers, search engines, etc.)
+Paths Inside the project:
 
-* Deployment instructions
+* root
 
-* ...
+This is where you assign review status and component status for each file in the system.
 
+* /components
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+CRUD operations for the components
+
+* /file_infos
+
+CRUD operations for the file_info objects (entry for individual files)

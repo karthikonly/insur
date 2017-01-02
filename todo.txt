@@ -34,7 +34,11 @@ lineview: auto save of the state using ajax - done
 treeview: update review and component through ajax - done
 move treeview to the home page and get realtime stats based on component, filetype etc - done
 
-delete reviewed and component data and use the product - ongoing
+delete reviewed and component data and use the product - done
+
+feedback: fix css in components & file_infos crud pages (bootstrap footer messing it)
+
+feedback: enable multi select for individual files
 
 later:
 bootstrap: menu nav bar - home, about - footer

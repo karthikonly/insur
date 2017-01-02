@@ -32,13 +32,17 @@ lineview: inline editing of the tree structure (make it form) (only: reviewed, c
 lineview: auto save of the state using ajax - done
 
 treeview: update review and component through ajax - done
+move treeview to the home page and get realtime stats based on component, filetype etc - done
 
-move treeview to the home page and get realtime stats based on component, filetype etc
+delete reviewed and component data and use the product - ongoing
 
 later:
 bootstrap: menu nav bar - home, about - footer
 - https://rubyplus.com/articles/1371-Integrating-Twitter-Bootstrap-3-3-with-Rails-4-2-
+treeview: aggregate reviewed/not reviewed/partially reviewed status at folder level
+treeview: aggregate component at folder level
 
 much later:
+treeview: make changes to vendor code to support different colors for span
 user model with devise, sign up, login, logout, current_user
 lineview: expand and collapse folders

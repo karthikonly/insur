@@ -32,6 +32,9 @@ class HomeController < ApplicationController
     render json: treeview_data
   end
 
+  def test_draggable
+  end
+
   private
     def treeview_data
       folder_data = add_folder_to_treeview([], '/', generate_consolidated_data['/'])

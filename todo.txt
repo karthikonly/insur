@@ -1,11 +1,13 @@
 todo:
 
-cleanup models and helpers - done
+cleanup models, helpers, routes - done
+cleanup controllers, view, layout - done
+fix assets (js, css), favicon, seeds, rake - done
 update the application layout file - done
+generate devise user model - done
 
-generate devise user model - ongoing
-cleanup controllers and view - ongoing
-
+customize devise model and add fields and validation
+change views (new and edit) for devise user to show additional fields
 generate home page for each user
 
 

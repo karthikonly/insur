@@ -83,40 +83,10 @@ table.simple {
   }
 }
 
-.folder_name, .file_name {
-  margin: 3px;
-}
-
-.spacer {
-  color: white;
-}
-
-.folder_name {
-  color: blue;
-}
-
-.file_name {
-  color: green;
-}
-
 .footer {
   position: relative;
   margin-top: -100px; /* negative value of footer height */
   height: 100px;
   clear:both;
   padding-top:20px;
-}
-
-div#treeview span.badge {
-  background-color: teal;
-}
-
-div#properties {
-  position: fixed;
-  top: 120px;
-  left: 950px;
-  border: 3px solid DarkTurquoise;
-  td {
-    padding: 8px;
-  }
 }

@@ -1,31 +1,10 @@
-== Project Review Tracker
+== Insurance Quote Generation
 
-This Ruby on Rails project is to track the review status of any given project under top root folder.
-
-This projects tracks Lines of Code, Review status of each file in the root folder.
+This project is prototype for generating quotation for insurance clients.
 
 Operations supported in this project:
 
-* Create Components
+* User Creation
 
-* Create FileInfo objects representing each file under the root folder
+* Login and home page for each user
 
-* Assign components to files
-
-* Assign review status to files
-
-* Find consolidated report based on file type, review status, components.
-
-Paths Inside the project:
-
-* root
-
-This is where you assign review status and component status for each file in the system.
-
-* /components
-
-CRUD operations for the components
-
-* /file_infos
-
-CRUD operations for the file_info objects (entry for individual files)

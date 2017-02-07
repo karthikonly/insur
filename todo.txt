@@ -1,8 +1,11 @@
 todo:
 
 cleanup models and helpers - done
+update the application layout file - done
+
 generate devise user model - ongoing
 cleanup controllers and view - ongoing
+
 generate home page for each user
 
 

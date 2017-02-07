@@ -11,7 +11,7 @@
   <%= yield :head %>
 </head>
 <body>
-  <div id='header'>
+  <div class='header'>
     <div align='right'>
       <% if user_signed_in? %>
         Welcome <%=  current_user.email %>
@@ -27,8 +27,10 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </div>
+  <hr/>
   <%= yield %>
   <div class='footer'>
+    <hr/>
     <br/>
     <h5 align="center">Written by Karthik L &lt;karthikonly@gmail.com&gt; </h5>
     <h5 align="center">&copy; All rights reserved</h5>

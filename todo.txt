@@ -1,5 +1,11 @@
 todo:
 
-cleanup models 
-generate devise user model
-cleanup controllers and view
+cleanup models and helpers - done
+generate devise user model - ongoing
+cleanup controllers and view - ongoing
+generate home page for each user
+
+
+create aws instance for hosting this in free tier
+install ruby, rails, git, mongo in aws instance
+deploy code in aws and make it running

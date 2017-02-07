@@ -1,50 +1,5 @@
-<% content_for :head do %>
-  <%= javascript_include_tag :pretty_view %>
-  <script type="text/javascript">
-    var treeview_data = <%= raw(@treeview_data.to_json) %>;
-  </script>
-<% end %>
-
-<div id="treeview" class="col-sm-8">treeview-content</div>
-<div id="properties">
-  <table class="property">
-  <tr>
-    <td colspan="3"><h3>Update: <span id='obj_name'></span></h3></td>
-  </tr>
-  <tr>
-    <td>Folder:</td>
-    <td colspan='2' id='is_folder'></td>
-  </tr>
-  <tr>
-    <td>Loc:</td>
-    <td colspan='2' id='loc'></td>
-  </tr>
-  <tr>
-    <td>Files:</td>
-    <td colspan='2' id='files'></td>
-  </tr>
-  <tr>
-    <td> Reviewed: <%= check_box_tag :reviewed %></td>
-    <td colspan="2"> <%= select_tag :component, options_for_select(@component_list)%> </td>
-  </tr>
-  <tr>
-    <td> <%= button_tag("Change", id: 'change') %></td>
-    <td colspan="2"></td>
-  </tr>
-  </table>
+<div id="home_div" class="col-sm-8">
+  <h2>Homepage Content</h2>
+  <p>Home page of insurance quote system. Bootstrap and jquery is initialized.</p>
 </div>
 
-<div class="col-sm-5">
-  <h3>Filetype statistics</h3>
-  <%= render partial: "nested_stats", locals: {data_hash: @type_compound_hash} %>
-</div>
-
-<div class="col-sm-5">
-  <h3>Reviewed statistics</h3>
-  <%= render partial: "stats", locals: {data_hash: @review_done_group_hash} %>
-</div>
-
-<div class="col-sm-5">
-  <h3>Component statistics</h3>
-  <%= render partial: "stats", locals: {data_hash: @component_group_hash} %>
-</div>

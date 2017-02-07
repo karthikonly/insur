@@ -12,6 +12,14 @@
 </head>
 <body>
   <div id='header'>
+    <div align='right'>
+      <% if user_signed_in? %>
+        Welcome <%=  current_user.email %>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path%> or <%= link_to "Sign up", new_user_registration_path %>
+      <% end %>
+    </div>
     <h1 align="center">Insurance Quote Tool</h1>
     <h2 align="center">Prototype for generating insurnace quotes. Fast.</h2>
   </div>

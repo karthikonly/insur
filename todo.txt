@@ -6,11 +6,13 @@ fix assets (js, css), favicon, seeds, rake - done
 update the application layout file - done
 generate devise user model - done
 
-customize devise model and add fields and validation
-change views (new and edit) for devise user to show additional fields
-generate home page for each user
-
+customize devise model and add fields and validation - done, only name
+change views (new and edit) for devise user to show additional fields - done, only name
+generate empty home page for each user - done
+make authenticatoin mandatory for all actions (application controller) - done
 
 create aws instance for hosting this in free tier
 install ruby, rails, git, mongo in aws instance
 deploy code in aws and make it running
+
+see screens in excel and break into tasks

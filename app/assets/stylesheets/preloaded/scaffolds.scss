@@ -41,6 +41,10 @@ div {
   color: green;
 }
 
+#alert {
+  color: red;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
@@ -73,6 +77,14 @@ div {
 }
 
 // custom css starts here
+.footer {
+  clear:both;
+}
+
+div#content {
+  margin-left: 10px;
+}
+
 table.simple {
   border-collapse: collapse;
   border: 1px solid gray;
@@ -83,10 +95,3 @@ table.simple {
   }
 }
 
-.footer {
-  position: relative;
-  margin-top: -100px; /* negative value of footer height */
-  height: 100px;
-  clear:both;
-  padding-top:20px;
-}

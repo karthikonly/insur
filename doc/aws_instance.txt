@@ -1,0 +1,8 @@
+instance id
+i-0229bb20161d62dcb
+
+DNS
+ec2-54-244-217-174.us-west-2.compute.amazonaws.com
+
+IPv4
+54.244.217.174

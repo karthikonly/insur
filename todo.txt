@@ -1,5 +1,6 @@
 todo:
 
+development:
 cleanup models, helpers, routes - done
 cleanup controllers, view, layout - done
 fix assets (js, css), favicon, seeds, rake - done
@@ -11,8 +12,16 @@ change views (new and edit) for devise user to show additional fields - done, on
 generate empty home page for each user - done
 make authenticatoin mandatory for all actions (application controller) - done
 
-create aws instance for hosting this in free tier
-install ruby, rails, git, mongo in aws instance
-deploy code in aws and make it running
+create aws instance for hosting this in free tier - done
+install ruby, rails, git, mongo in aws instance - done
+deploy code in aws and make it running - done, development server, not production server
 
-see screens in excel and break into tasks
+
+see screens in excel and break into tasks - ongoing
+
+deployment:
+setup capistrano for auto deployment - 
+setup 
+
+documentation:
+create a document describing all the steps for auto deploy

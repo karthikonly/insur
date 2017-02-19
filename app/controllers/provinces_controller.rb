@@ -1,5 +1,6 @@
 class ProvincesController < ApplicationController
   before_action :set_province, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   # GET /provinces
   # GET /provinces.json

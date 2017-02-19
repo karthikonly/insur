@@ -10,6 +10,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1
   # GET /quotes/1.json
   def show
+    # TODO: update the quote with application information
   end
 
   # GET /quotes/new
@@ -18,16 +19,13 @@ class QuotesController < ApplicationController
     @quote = Quote.new
   end
 
-  # GET /quotes/1/edit
-  def edit
-  end
-
   # POST /quotes
   # POST /quotes.json
   def create
     @quote = Quote.new(quote_params)
     @quote.effective_date ||= Date.today
     @quote.user = current_user
+    # TODO: store the quote in cookie
 
     respond_to do |format|
       if @quote.save
@@ -38,6 +36,21 @@ class QuotesController < ApplicationController
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /quotes/new_applicant
+  def new_applicant
+    @applicant = Applicant.new
+    # TODO: create view for the applicant
+  end
+
+  # POST /quotes/create_applicant
+  def create_applicant
+    # TODO: retrieve the quote from the system and attach applicant to the quote
+  end
+
+  # GET /quotes/1/edit
+  def edit
   end
 
   # PATCH/PUT /quotes/1

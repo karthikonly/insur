@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys:
         [:email, :password, :password_confirmation, :current_password, :name])
     end
+
+    # check if current user is admin, else redirect to home page
+    def check_admin
+      redirect_to :root unless current_user.admin?
+    end
 end

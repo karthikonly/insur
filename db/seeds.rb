@@ -11,13 +11,17 @@ User_list = [
     name: "Admin",
     email: "admin@insurance.com",
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    role: User::ADMIN_ROLE
   }
 ]
 
 def load_admin_user
   User_list.each do |user|
-    User.find_or_create_by(name: user[:name])
+    u = User.create(user)
+    unless u.valid?
+      puts u.errors.messages.inspect
+    end
   end 
 end
 

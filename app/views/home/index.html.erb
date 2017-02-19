@@ -1,8 +1,18 @@
 <div id="home_div">
-  <h2>Homepage Content</h2>
-  <p>Home page of insurance quote system. Bootstrap and jquery is initialized.</p>
-  <p>
-    This is customized home page for <%= current_user.name %>
-  </p>
+  <div class="home_page_content">
+    <h4>Homepage Content</h2>
+    <p>
+      This is customized home page for <%= current_user.name %>
+    </p>
+  </div>
+  <div class="home_page_content">
+    <h4>Last 5 Quotes generated</h2>
+    <ul>
+      <% @last5_quotes.each do |quote| %>
+        <li><%= link_to "Quote #{quote.id.to_s[-5..-1]} generated on #{quote.created_at.to_date} at #{quote.created_at.strftime('%H:%M')}", quote_path(quote) %></li>
+      <% end %>
+    </ul>
+    <h5><%= link_to 'Generate New Quote', new_quote_path %></h5>
+  </div>
 </div>
 

@@ -2,7 +2,6 @@
   <% if @quote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
-
       <ul>
       <% @quote.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,20 +11,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :agent_code %><br>
-    <%= f.text_field :agent_code %>
-  </div>
-  <div class="field">
-    <%= f.label :effective_date %><br>
+    <%= f.label "Effective Date of policy" %><br>
     <%#= f.date_select :effective_date %>
   </div>
   <div class="field">
-    <%= f.label :line %><br>
-    <%= f.text_field :line %>
+    <%= f.label "Select the product line" %><br>
+    <%= f.select :line, options_for_select([[Quote::PERSONAL_AUTO, Quote::PERSONAL_AUTO]]) %>
   </div>
   <div class="field">
     <%= f.label :state %><br>
     <%= f.select :state, options_from_collection_for_select(@provinces, "symbol", "name")%>
+  </div>
+  <div class="field">
+    <%= f.label "Enter Agent Code if you have one" %><br>
+    <%= f.text_field :agent_code %>
   </div>
   <div class="actions">
     <%= f.submit %>

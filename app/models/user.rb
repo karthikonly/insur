@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,10 +13,19 @@ class User
 
   # other data fields
   field :name,                type: String
+  field :role,                type: String
+
+  ADMIN_ROLE = "admin".freeze
+
+  has_many                    :quotes
 
   # validation
   validates_presence_of       :name, :email
-  validates_uniqueness_of     :name, :email, :case_sensitive => false 
+  validates_uniqueness_of     :email, :case_sensitive => false
+
+  def admin?
+    return self.role == ADMIN_ROLE
+  end
 
   ## Recoverable
   field :reset_password_token,   type: String

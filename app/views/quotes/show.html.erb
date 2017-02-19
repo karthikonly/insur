@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Agent code:</strong>
+  <%= @quote.agent_code %>
+</p>
+
+<p>
+  <strong>Effective date:</strong>
+  <%= @quote.effective_date %>
+</p>
+
+<p>
+  <strong>Line:</strong>
+  <%= @quote.line %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @quote.state %>
+</p>
+
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<%= link_to 'Back', quotes_path %>

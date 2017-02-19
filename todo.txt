@@ -16,17 +16,18 @@ create aws instance for hosting this in free tier - done
 install ruby, rails, git, mongo in aws instance - done
 deploy code in aws and make it running - done, development server, not production server
 
-see screens in excel and break into tasks - ongoing
+see screens in excel and break into tasks - done
+province model for US states - done
+quote model basic - done
 
-province model for US states - ongoing
-users home page to list all the quotes of the user
-quotes new screen
+quotes new screen - ongoing
 quotes applicant screen
 quotes drivers screen
 quotes vehicles screen
 quotes accidents & violations screen
 quotes coverage screen
 quotes summary screen
+users home page to list all the quotes of the user
 
 
 deployment:

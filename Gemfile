@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'mongoid', '5.0.2'
 gem 'thor', '0.19.1'
-gem 'rake', '10.4.2'
+gem 'rake', '12.0.0'
 
 gem 'devise'
 gem 'bson_ext'

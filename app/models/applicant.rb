@@ -19,7 +19,7 @@ class Applicant
   field :risk_addr_1, type: String
   field :risk_addr_2, type: String
   field :risk_city, type: String
-  field :risk, type: State
+  field :risk_state, type: String
   field :risk_zip, type: String
   field :risk_zip2, type: String
   field :residence_type, type: String

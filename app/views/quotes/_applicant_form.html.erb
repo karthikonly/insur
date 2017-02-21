@@ -36,13 +36,13 @@
     <%= f.label "Co-Applicant Name" %>
     <%= f.select :coappl_prefix, options_for_select(Applicant::NAME_PREFIXES.map {|x| [x,x] }) %>
     <%= f.text_field :coappl_first %>&nbsp;&nbsp;&nbsp;
-    <%= f.text_field :appl_middle %>
-    <%= f.text_field :appl_last %>&nbsp;&nbsp;&nbsp;
-    <%= f.text_field :appl_suffix %>
+    <%= f.text_field :coappl_middle %>
+    <%= f.text_field :coappl_last %>&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :coappl_suffix %>
   </div>
   <div class="field">
     <%= f.label "Co-Applicant SSN" %>
-    <%= f.text_field :appl_ssn %>
+    <%= f.text_field :coappl_ssn %>
   </div>
   <div class="field">
     <%= f.label "Agency Customer Id" %>
@@ -75,6 +75,60 @@
     <span class="required">*&nbsp;</span>
     &nbsp;-&nbsp;
     <%= f.text_field :risk_zip2 %>
+  </div>
+  <div class="field">
+    <%= f.label "Current Residence" %>
+    <%= f.select :residence_type, options_for_select(Applicant::RESIDENCE_TYPES.map {|x| [x,x] }) %>
+  </div>
+  <div class="field">
+    <%= f.label "Years at Residence" %>
+    <%= f.select :years_at_residence, options_for_select(Applicant::YEARS_AT_RESIDENCE.map {|x| [x,x] }) %>
+  </div>
+
+  <div class="heading">
+    Additional Policy Information
+  </div>
+  <div class="field">
+    <%= f.label "Companion Auto/Home Credit" %>
+    <%= f.select :companion_credit, options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+  </div>
+  <div class="field">
+    <%= f.label "Companion Policy Information" %>
+    <%= f.text_field :companion_policy %>
+  </div>
+  <div class="field">
+    <%= f.label "Life Policy Credit" %>
+    <%= f.select :life_policy_credit, options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+  </div>
+  <div class="field">
+    <%= f.label "Life Policy Information" %>
+    <%= f.text_field :life_policy %>
+  </div>
+  <div class="field">
+    <%= f.label "Young Family Discount" %>
+    <%= f.select :young_family_discount, options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+  </div>
+  <div class="field">
+    <%= f.label "Life Policy Information" %>
+    <%= f.select :group_discount_option, options_for_select(Applicant::GROUP_DISCOUNT_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label "Young Family Discount" %>
+    <%= f.select :personal_account_bill, options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+  </div>
+  <div class="field">
+    <%= f.label "Star Pak" %>
+    <%= f.select :star_pak, options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+  </div>
+  <div class="field">
+    <%= f.label "Star Pak Account" %>
+    <%= f.text_field :star_pak_account %>
+  </div>
+  <div class="field">
+    <%= f.label "Parent Policy Number" %>
+    <%= f.text_field :parent_policy_number1 %>
+    &nbsp;-&nbsp;
+    <%= f.text_field :parent_policy_number2 %>
   </div>
   <div class="actions">
     <%= f.submit %>

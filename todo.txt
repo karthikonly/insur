@@ -25,8 +25,9 @@ reference user_id in quote model - done
 add roles in user model and admin should list all quotes - done
 change homescreen to list all quotes for the user and generate new quote - done
 
-quotes applicant screen - ongoing
+quotes applicant screen - done
 
+fix production css/js assets precompile issue - ongoing
 
 quotes drivers screen
 quotes vehicles screen

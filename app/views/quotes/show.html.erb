@@ -2,20 +2,29 @@
   <strong>Agent code:</strong>
   <%= @quote.agent_code %>
 </p>
-
 <p>
   <strong>Effective date:</strong>
   <%= @quote.effective_date %>
 </p>
-
 <p>
   <strong>Line:</strong>
   <%= @quote.line %>
 </p>
-
 <p>
   <strong>State:</strong>
   <%= @quote.state %>
+</p>
+<p>
+  <strong>Applicant Information:</strong>
+  <%= @quote.applicant.try(:applicant_info) %>
+</p>
+<p>
+  <strong>Co Applicant Information:</strong>
+  <%= @quote.applicant.try(:coapplicant_info) %>
+</p>
+<p>
+  <strong>Risk Address: </strong>
+  <%= @quote.applicant.try(:risk_address_info) %>
 </p>
 
 <%= link_to 'Edit', edit_quote_path(@quote) %> |

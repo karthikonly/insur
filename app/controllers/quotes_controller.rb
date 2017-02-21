@@ -10,7 +10,6 @@ class QuotesController < ApplicationController
   # GET /quotes/1
   # GET /quotes/1.json
   def show
-    # TODO: update the quote with application information
   end
 
   # GET /quotes/new
@@ -44,7 +43,21 @@ class QuotesController < ApplicationController
 
   # POST /quotes/:id/create_applicant
   def create_applicant
-    # TODO: retrieve the quote from the system and attach applicant to the quote
+    @applicant = Applicant.new(applicant_params)
+    @quote.applicant = @applicant
+    # logger.debug @quote.inspect
+    # logger.debug applicant_params.inspect
+    # logger.debug @applicant.inspect
+
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to :root, notice: 'Applicant was successfully created.' }
+        format.json { render :show, status: :created, location: @quote }
+      else
+        format.html { render :new }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /quotes/1/edit
@@ -84,5 +97,14 @@ class QuotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
       params.require(:quote).permit(:agent_code, :effective_date, :line, :state)
+    end
+
+    def applicant_params
+      params.require(:applicant).permit(:appl_prefix, :appl_first, :appl_middle, :appl_last, :appl_suffix, :appl_ssn,
+        :coappl_prefix, :coappl_first, :coappl_middle, :coappl_last, :coappl_suffix, :coappl_ssn,
+        :agency_cust_id, :phone, :risk_addr_1, :risk_addr_2, :risk_city, :risk_state, :risk_zip, :risk_zip2,
+        :residence_type, :years_at_residence, :companion_credit, :companion_policy, :life_policy_credit,
+        :life_policy, :young_family_discount, :group_discount_option, :personal_account_bill, :star_pak,
+        :star_pak_account, :parent_policy_number1, :parent_policy_number2)
     end
 end

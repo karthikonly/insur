@@ -19,24 +19,23 @@ deploy code in aws and make it running - done, development server, not productio
 see screens in excel and break into tasks - done
 province model for US states - done
 
-quotes new screen - done
+:quotes new screen - done
 quote model basic - done
 reference user_id in quote model - done
 add roles in user model and admin should list all quotes - done
 change homescreen to list all quotes for the user and generate new quote - done
+:quotes applicant screen - done
+:quotes drivers screen - done
 
-quotes applicant screen - done
+fix production css/js assets precompile issue - bug
+date picker fix (change in all screens) - bug
 
-fix production css/js assets precompile issue - ongoing
-
-quotes drivers screen
 quotes vehicles screen
 quotes accidents & violations screen
 quotes coverage screen
 quotes summary screen
 users home page to list all the quotes of the user
 
-quotes new screen: date picker fix - later
 
 deployment:
 setup capistrano for auto deployment - done, running only in mac/linux

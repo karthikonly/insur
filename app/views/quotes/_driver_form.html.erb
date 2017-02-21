@@ -1,0 +1,62 @@
+<%= form_for(@driver, url: create_driver_quote_path(@quote)) do |f| %>
+  <% if @driver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@driver.errors.count, "error") %> prohibited this driver from being saved:</h2>
+      <ul>
+      <% @driver.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="heading">
+    Driver Information
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label "Driver Name" %>
+    <%= f.select :prefix, options_for_select(Applicant::NAME_PREFIXES.map {|x| [x,x] }) %>
+    <%= f.text_field :first, value: @quote.applicant.try(:appl_first) %>
+    <span class="required">*&nbsp;</span>
+    <%= f.text_field :middle, value: @quote.applicant.try(:appl_middle) %>
+    <%= f.text_field :last, value: @quote.applicant.try(:appl_last) %>
+    <span class="required">*&nbsp;</span>
+    <%= f.text_field :suffix, value: @quote.applicant.try(:appl_suffix) %>
+  </div>
+  <div class="field">
+    <%= f.label "Relationship With Applicant" %>
+    <%= f.select :applicant_relation, options_for_select(Driver::APPLICANT_RELATION.map {|x| [x,x] }) %>
+  </div>
+  <div class="field">
+    <%= f.label "Date of Birth" %>
+    <!-- <%= f.text_field :dob %> -->
+  </div>
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.select :gender, options_for_select(Driver::GENDERS) %>
+  </div>
+  <div class="field">
+    <%= f.label :marital_status %>
+    <%= f.select :marital_status, options_for_select(Driver::MARITAL_STATUSES.map {|x| [x,x] }) %>
+  </div>
+  <div class="field">
+    <%= f.label :license_state %>
+    <%= f.select :license_state, options_from_collection_for_select(@provinces, "symbol", "name"), value: @quote.state %>
+  </div>
+  <div class="field">
+    <%= f.label :license_number %>
+    <%= f.text_field :license_number %>
+  </div>
+  <div class="field">
+    <%= f.label :license_date %>
+    <!-- <%= f.text_field :license_date %> -->
+  </div>
+  <div class="field">
+    <%= f.label :license_valid_till %>
+    <!-- <%= f.text_field :license_valid_till %> -->
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

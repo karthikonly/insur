@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       get   'new_applicant'
       post  'create_applicant'
+      get   'new_driver'
+      post  'create_driver'
     end
   end
 end

@@ -26,6 +26,10 @@
   <strong>Risk Address: </strong>
   <%= @quote.applicant.try(:risk_address_info) %>
 </p>
+<p>
+  <strong>Driver Name: </strong>
+  <%= @quote.driver.try(:full_name) %>
+</p>
 
 <%= link_to 'Edit', edit_quote_path(@quote) %> |
 <%= link_to 'Back', quotes_path %>

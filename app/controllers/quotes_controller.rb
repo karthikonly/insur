@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant]
+  before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant, :new_driver, :create_driver]
+  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :edit]
 
   # GET /quotes
   # GET /quotes.json
@@ -14,7 +15,6 @@ class QuotesController < ApplicationController
 
   # GET /quotes/new
   def new
-    @provinces = Province.where(country: "USA")
     @quote = Quote.new
   end
 
@@ -51,10 +51,31 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to :root, notice: 'Applicant was successfully created.' }
+        format.html { redirect_to new_driver_quote_path(@quote), notice: 'Applicant was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
-        format.html { render :new }
+        format.html { render :new_applicant }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /quotes/:id/new_driver
+  def new_driver
+    @driver = Driver.new
+  end
+
+  # POST /quotes/:id/create_driver
+  def create_driver
+    @driver = Driver.new(driver_params)
+    @quote.driver = @driver
+
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to :root, notice: 'Driver was successfully created.' }
+        format.json { render :show, status: :created, location: @quote }
+      else
+        format.html { render :new_driver }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -89,6 +110,11 @@ class QuotesController < ApplicationController
   end
 
   private
+    # Callback to set the provinces required for many new/edit screens
+    def set_provinces
+      @provinces = Province.where(country: "USA")
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_quote
       @quote = Quote.find(params[:id])
@@ -106,5 +132,10 @@ class QuotesController < ApplicationController
         :residence_type, :years_at_residence, :companion_credit, :companion_policy, :life_policy_credit,
         :life_policy, :young_family_discount, :group_discount_option, :personal_account_bill, :star_pak,
         :star_pak_account, :parent_policy_number1, :parent_policy_number2)
+    end
+
+    def driver_params
+      params.require(:driver).permit(:prefix, :first, :middle, :last, :suffix, :applicant_relation, :dob,
+        :gender, :marital_status, :license_status, :license_state, :license_number, :license_date, :license_valid_till)
     end
 end

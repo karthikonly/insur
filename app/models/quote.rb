@@ -6,6 +6,7 @@ class Quote
 
   belongs_to  :user
   embeds_one  :applicant
+  embeds_one  :driver
 
   field :effective_date, type: Date
   field :line, type: String, default: PERSONAL_AUTO

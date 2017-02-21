@@ -2,6 +2,8 @@ class Applicant
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  NAME_PREFIXES = ["Mr.", "Mrs.", "Ms.", "Sir.", "Dr."].freeze
+
   field :appl_prefix, type: String
   field :appl_first, type: String
   field :appl_middle, type: String

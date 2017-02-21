@@ -1,0 +1,82 @@
+<%= form_for(@applicant, url: create_applicant_quote_path(@quote)) do |f| %>
+  <% if @applicant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@applicant.errors.count, "error") %> prohibited this applicant from being saved:</h2>
+      <ul>
+      <% @applicant.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="heading">
+    Applicant(s) Information
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label "Applicant Name" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <%= f.select :appl_prefix, options_for_select(Applicant::NAME_PREFIXES.map {|x| [x,x] }) %>
+    <%= f.text_field :appl_first, value: "firstname" %>
+    <span class="required">*&nbsp;</span>
+    <%= f.text_field :appl_middle %>
+    <%= f.text_field :appl_last, value: "lastname" %>
+    <span class="required">*&nbsp;</span>
+    <%= f.text_field :appl_suffix %>
+  </div>
+  <div class="field">
+    <%= f.label "Applicant SSN" %>
+    <%= f.text_field :appl_ssn %>
+  </div>
+  <div class="field">
+    <%= f.label "Co-Applicant Name" %>
+    <%= f.select :coappl_prefix, options_for_select(Applicant::NAME_PREFIXES.map {|x| [x,x] }) %>
+    <%= f.text_field :coappl_first %>&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :appl_middle %>
+    <%= f.text_field :appl_last %>&nbsp;&nbsp;&nbsp;
+    <%= f.text_field :appl_suffix %>
+  </div>
+  <div class="field">
+    <%= f.label "Co-Applicant SSN" %>
+    <%= f.text_field :appl_ssn %>
+  </div>
+  <div class="field">
+    <%= f.label "Agency Customer Id" %>
+    <%= f.text_field :agency_cust_id %>
+  </div>
+
+  <div class="heading">
+    Address Information
+  </div>
+  Current Risk Address Information
+  <div class="field">
+    <%= f.label "Risk Street Address" %>
+    <%= f.text_field :risk_addr_1 %>
+  </div>
+  <div class="field">
+    <%= f.label "Risk Address Line 2" %>
+    <%= f.text_field :risk_addr_2 %>
+  </div>
+  <div class="field">
+    <%= f.label "Risk City" %>
+    <%= f.text_field :risk_city %>
+  </div>
+  <div class="field">
+    <%= f.label "Risk State" %>
+    <%= f.label @quote.state %>
+  </div>
+  <div class="field">
+    <%= f.label "Risk Zip Code" %>
+    <%= f.text_field :risk_zip %>
+    <span class="required">*&nbsp;</span>
+    &nbsp;-&nbsp;
+    <%= f.text_field :risk_zip2 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

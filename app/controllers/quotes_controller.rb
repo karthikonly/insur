@@ -1,5 +1,5 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant]
 
   # GET /quotes
   # GET /quotes.json
@@ -25,11 +25,10 @@ class QuotesController < ApplicationController
     @quote = Quote.new(quote_params)
     @quote.effective_date ||= Date.today
     @quote.user = current_user
-    # TODO: store the quote in cookie
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to :root, notice: 'Quote was successfully created.' }
+        format.html { redirect_to new_applicant_quote_path(@quote), notice: 'Quote was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new }
@@ -38,13 +37,12 @@ class QuotesController < ApplicationController
     end
   end
 
-  # GET /quotes/new_applicant
+  # GET /quotes/:id/new_applicant
   def new_applicant
     @applicant = Applicant.new
-    # TODO: create view for the applicant
   end
 
-  # POST /quotes/create_applicant
+  # POST /quotes/:id/create_applicant
   def create_applicant
     # TODO: retrieve the quote from the system and attach applicant to the quote
   end

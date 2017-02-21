@@ -5,6 +5,7 @@ class Quote
   PERSONAL_AUTO = "Personal Auto"
 
   belongs_to  :user
+  has_one     :applicant
 
   field :effective_date, type: Date
   field :line, type: String, default: PERSONAL_AUTO

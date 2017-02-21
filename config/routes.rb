@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources :quotes
-  resources :provinces
   root 'home#index'
   devise_for :users
+  resources :provinces
+  resources :quotes do
+    member do
+      get   'new_applicant'
+      post  'create_applicant'
+    end
+  end
 end

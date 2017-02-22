@@ -1,6 +1,7 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant, :new_driver, :create_driver]
-  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :edit]
+  before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant, 
+    :new_driver, :create_driver, :new_insur_vehicle, :create_insur_vehicle]
+  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :new_insur_vehicle, :edit]
 
   # GET /quotes
   # GET /quotes.json
@@ -72,10 +73,31 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to :root, notice: 'Driver was successfully created.' }
+        format.html { redirect_to new_insur_vehicle_quote_path(@quote), notice: 'Driver was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new_driver }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /quotes/:id/new_insur_vehicle
+  def new_insur_vehicle
+    @insur_vehicle = InsurVehicle.new
+  end
+
+  # POST /quotes/:id/create_insur_vehicle
+  def create_insur_vehicle
+    @insur_vehicle = InsurVehicle.new(insur_vehicle_params)
+    @quote.insur_vehicle = @insur_vehicle
+
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to :root, notice: 'Insured Vehicle was successfully created.' }
+        format.json { render :show, status: :created, location: @quote }
+      else
+        format.html { render :new_insur_vehicle }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -137,5 +159,9 @@ class QuotesController < ApplicationController
     def driver_params
       params.require(:driver).permit(:prefix, :first, :middle, :last, :suffix, :applicant_relation, :dob,
         :gender, :marital_status, :license_status, :license_state, :license_number, :license_date, :license_valid_till)
+    end
+
+    def insur_vehicle_params
+      params.require(:insur_vehicle).permit(:vin, :type, :usage, :annual_mileage, :anti_theft, :vehicle_id)
     end
 end

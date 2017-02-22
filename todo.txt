@@ -27,14 +27,24 @@ change homescreen to list all quotes for the user and generate new quote - done
 :quotes applicant screen - done
 :quotes drivers screen - done
 
-fix production css/js assets precompile issue - bug
-date picker fix (change in all screens) - bug
+:quotes vehicles screen - done
+US ref db of make and model and vehicle model - done
 
-quotes vehicles screen
+
+rule engine evaluate
+create drag and drop rule engine and models
+
+
+
+later:
 quotes accidents & violations screen
 quotes coverage screen
 quotes summary screen
-users home page to list all the quotes of the user
+
+fix production css/js assets precompile issue - bug
+date picker fix (change in all screens) - bug
+add reference to vehicle in new_insur_vehicle form/screen - feature
+
 
 
 deployment:

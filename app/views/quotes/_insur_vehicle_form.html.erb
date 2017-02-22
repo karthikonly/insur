@@ -1,0 +1,40 @@
+<%= form_for(@insur_vehicle, url: create_insur_vehicle_quote_path(@quote)) do |f| %>
+  <% if @insur_vehicle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insur_vehicle.errors.count, "error") %> prohibited this Insured Vehicle from being saved:</h2>
+      <ul>
+      <% @insur_vehicle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="heading">
+    Insured Vehicle Information
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :vin %>
+    <%= f.text_field :vin %>
+  </div>
+  <div class="field">
+    <%= f.label :annual_mileage %>
+    <%= f.number_field :annual_mileage %>
+  </div>
+  <div class="field">
+    <%= f.label :type %>
+    <%= f.select :type, options_for_select(InsurVehicle::TYPE_OPTIONS) %>
+  </div>
+  <div class="field">
+    <%= f.label :usage %>
+    <%= f.select :usage, options_for_select(InsurVehicle::USAGE_OPTIONS) %>
+  </div>
+    <div class="field">
+    <%= f.label :anti_theft_device %>
+    <%= f.select :anti_theft, options_for_select(InsurVehicle::ANTI_THEFT_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Insured Vehicle" %>
+  </div>
+<% end %>

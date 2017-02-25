@@ -1,0 +1,50 @@
+<h1>Drag and Drop Elements in Screen</h1>
+<hr/>
+<table>
+  <tr>
+    <td>
+      <div id="properties">
+        <h4>Element Properties</h4>
+        <p class="field">
+          <%= label_tag :var_name %><br>
+          <%= text_field_tag :var_name %>
+        </p>
+        <p class="field">
+          <%= label_tag :display_name %><br>
+          <%= text_field_tag :display_name %>
+        </p>
+        <p class="field">
+          <%= label_tag :mandatory %>&nbsp;&nbsp;&nbsp;
+          <%= select_tag :mandatory,  options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+        </p>        
+        <p class="field">
+          <%= label_tag :data_type %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <%= select_tag :data_type, options_for_select(Drag::DATATYPE_OPTIONS) %>
+        </p>
+        <p class="field">
+          <%= label_tag :default_value %><br>
+          <%= text_field_tag :display_name %>
+        </p>
+        <p class="field">
+          <%= label_tag :control %>&nbsp;
+          <%= select_tag :control,  options_for_select(Drag::CONTROL_OPTIONS) %>
+        </p>
+      </div>
+    </td>
+    <td>
+      <div id="playground_header">
+        <%= button_tag "New element", type: :button, id: :new_element %>
+        <%= button_tag "Save and Preview", type: :button, id: :save_and_preview %>
+        <%= button_tag "Save and Exit", type: :button, id: :save_and_exit %>
+      </div>
+      <div id="playground"/>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <hr/>
+      <h4>Preview of the Screen</h4>
+      <div id="preview"/>
+    </td>
+  </tr>
+</table>

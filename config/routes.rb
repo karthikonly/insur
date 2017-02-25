@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  resources :drags
   root 'home#index'
   devise_for :users
-  resources :provinces
+  resources :provinces, only: [:new, :edit, :create, :update, :destroy] do
+    member do 
+      post 'save_and_preview'
+    end
+  end
   resources :quotes do
     member do
       get   'new_applicant'

@@ -1,0 +1,82 @@
+Drag Model with custom json               - done
+:saved boolean false                      - done
+:content hash                             - done
+Drag controller CRUD no index, no shows   - done
+get new                                   - done
+post create                               - done
+get edit                                  - done
+put update                                - done
+delete destroy                            - done
+post save_and_preview                     - done
+new redirects to created and edit screen  - done
+
+create a 'playground' div 600 w x 800 h                       - done
+create a 'properties' div to show the properties of this div  - done
+create a 'element' span to show individual elements           - done
+
+data_modelling each element has following fields - done
+:var_name - without spaces used in internal rule engine                         - done
+:display_name - with spaces which will be displayed during input                - done
+:datatype - integer, string, date, boolean                                      - done
+:default value -                                                                - done
+:control - number_field, text_field, datecontrol, checkbox, select,             - done
+:mandatory -                                                                    - done
+:validations - regular expression                                               - later
+
+javscript:
+initialize a global datastructure 'content' containing all the actions of user.
+content is an array of hashes, the order in the array is the order in which the elements are processed
+Create element button in UI creates and element and shows the properties in property div
+'current' object points to the properties of the user
+When each button is selected, the 'current' variable changes and the values are shown in the div
+if user changes the values the current is updated which will update the content array
+when the jquery element snags, then we should get a call back to reorder the elements
+
+as and when we change the divs and press save_and_preview a dynamic form appears below which is generated from the json
+pressing save_and_exit should post the json and take you to home page
+
+example content:
+{
+  content = [
+    {
+      var_name: "car_year",
+      display_name: "Year car was built",
+      datatype: "Integer",
+      default_value: "2016",
+      control: "number_field",
+      validations: nil,
+      mandatory: true
+    },
+    {
+      var_name: "car_make",
+      display_name: "Manufacturer of car",
+      datatype: "String",
+      default_value: nil,
+      control: "text_field",
+      validations: nil,
+      mandatory: false
+    }
+  ]
+}
+
+dynamic transformation configuration xml:
+{
+  name: "/",
+  pre_process: "<div>",
+  post_process: "</div>",
+  type: hash,
+  process: {
+    content: {
+      pre_process: "<br/>",
+      post_process: "<p>Form developed by Karthik </p>",
+      type: array
+      process: {
+        element: {
+          var_name: nil,
+          display_name: "<string>$1</string>"
+          datatype: 
+        }
+      }
+    }
+  }
+}

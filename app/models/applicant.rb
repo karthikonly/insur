@@ -7,7 +7,7 @@ class Applicant
   NAME_PREFIXES = ["Mr.", "Mrs.", "Ms.", "Sir.", "Dr."].freeze
   RESIDENCE_TYPES = ["Own Home", "Rented-Family", "Rented-Shared", "None of the Above"].freeze
   YEARS_AT_RESIDENCE = ["0-2 Years", "2-4 Years", "4-10 Years", "10 Years+"].freeze
-  BOOLEAN_SELECT_CHOICES = [[false, "No"],[true, "Yes"]].freeze
+  BOOLEAN_SELECT_CHOICES = [["No", false], ["Yes", true]].freeze
   GROUP_DISCOUNT_OPTIONS = ["None", "Corporate", "Bulk Discount > 15 Persons"].freeze
 
   field :appl_prefix, type: String

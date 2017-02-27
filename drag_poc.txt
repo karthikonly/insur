@@ -24,13 +24,13 @@ data_modelling each element has following fields - done
 :validations - regular expression                                               - later
 
 javscript:
-initialize a global datastructure 'content' containing all the actions of user.
-content is an array of hashes, the order in the array is the order in which the elements are processed
-Create element button in UI creates and element and shows the properties in property div
-'current' object points to the properties of the user
-When each button is selected, the 'current' variable changes and the values are shown in the div
-if user changes the values the current is updated which will update the content array
-when the jquery element snags, then we should get a call back to reorder the elements
+Create element button in UI creates and element and shows the properties in property div - done
+store all the divs properties in data element of the object - done
+when selection changes update data in the ui form - done
+when data changes update data in the div - done
+
+when save_and_exit and save_and_preview called, build the content array for posting - ongoing
+update the API to handle save and preview - ongoing
 
 as and when we change the divs and press save_and_preview a dynamic form appears below which is generated from the json
 pressing save_and_exit should post the json and take you to home page

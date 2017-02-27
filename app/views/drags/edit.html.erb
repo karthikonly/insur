@@ -30,7 +30,7 @@
         </p>
         <p class="field">
           <%= label_tag :default_value %><br>
-          <%= text_field_tag :display_name %>
+          <%= text_field_tag :default_value %>
         </p>
         <p class="field">
           <%= label_tag :control %>&nbsp;
@@ -45,6 +45,11 @@
         <%= button_tag "Save and Exit", type: :button, id: :save_and_exit %>
       </div>
       <div id="playground"/>
+    </td>
+    <td>
+      <div id="debug">
+        <span id="debug_span"/>
+      </div>
     </td>
   </tr>
   <tr>

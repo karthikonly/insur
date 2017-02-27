@@ -104,6 +104,25 @@ div#playground {
   background-color: powderblue;
 }
 
+div.element {
+  height: 20px;
+  width: 100px;
+  text-align: center;
+  border: 1px solid blue;
+  background-color: yellow;
+}
+
+div.element.current {
+  border: 1px solid green;
+  background-color: lightgray;
+}
+
+div#debug {
+  width: 100px;
+  border: 1px solid gray;
+  background-color: lightgray;
+}
+
 div#preview {
   margin: 10px;
   padding: 10px;

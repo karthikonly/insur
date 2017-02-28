@@ -32,8 +32,8 @@ create button to take to homepage - done
 when save and save_and_preview called, build the content array for posting - done
 for save just save data - done
 
-for save and preview generate html with the new form - ongoing
-form generation code in save_and_preview_html.erb for converting json to html - ongoing
+for save and preview generate html with the new form - done
+form generation code in save_and_preview_html.erb for converting json to html - done
 
 example content:
 {

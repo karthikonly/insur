@@ -9,9 +9,36 @@
   </div>
 <% end %>
 
-Hello world
-<div>
-  <h3> Empty form and dummy html </h3>
-  <span> some content </span>
+<div class="form">
+  <h3> Hello world Form generation</h3>
+  <table>
+  <% @drag.content.each do |key, element| %>
+    <tr>
+      <td>
+        <%= label_tag element[:display_name] %>
+        <% unless element[:mandatory] && element[:mandatory] == "false" %>
+          <span class="required">*</span>
+        <% end %>
+        &nbsp;
+      </td>
+      <td>
+        <% case element[:data_type] %>
+        <% when 'integer' %>
+          <%= number_field_tag element[:var_name], element[:default_value] %>
+        <% when 'string' %>
+          <%= text_field_tag element[:var_name], element[:default_value] %>
+        <% when 'date' %>
+          <%= text_field_tag element[:var_name], element[:default_value] %>
+        <% when 'boolean' %>
+          <%= select_tag element[:var_name], options_for_select(Applicant::BOOLEAN_SELECT_CHOICES, element[:default_value]) %>
+        <% else %>
+          <%= element[:data_type] %>
+          <%= element[:var_name]  %>
+          <%= element[:default_value] %>
+          <%= element[:control] %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
 </div>
 

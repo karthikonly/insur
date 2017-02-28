@@ -27,17 +27,15 @@ class DragsController < ApplicationController
     end
   end
 
-  # POST /drags/save_and_preview
-  # POST /drags/save_and_preview.json
+  # PATCH/PUT /drags/1/save_and_preview
+  # PATCH/PUT /drags/1/save_and_preview.json
   def save_and_preview
-    @drag = Drag.new(drag_params)
-
     respond_to do |format|
-      if @drag.save
-        format.html { redirect_to @drag, notice: 'Drag was successfully created.' }
-        format.json { render :show, status: :created, location: @drag }
+      if @drag.update(drag_params)
+        format.html { redirect_to @drag, notice: 'Drag was successfully updated.' }
+        format.json { render :show, status: :ok, location: @drag }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @drag.errors, status: :unprocessable_entity }
       end
     end

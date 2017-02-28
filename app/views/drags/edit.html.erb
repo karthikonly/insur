@@ -1,8 +1,8 @@
 <% content_for :head do %>
   <%= javascript_include_tag :drag_and_drop %>
   <script type="text/javascript">
-    var drag = <%= raw(@drag.to_json) %>;
     var content = null;
+    var id = "<%= raw(@drag.id.to_s) %>";
   </script>
 <% end %>
 
@@ -49,9 +49,7 @@
       <div id="playground"/>
     </td>
     <td>
-      <div id="debug">
-        <span id="debug_span"/>
-      </div>
+      <div id="debug"/>
     </td>
   </tr>
   <tr>

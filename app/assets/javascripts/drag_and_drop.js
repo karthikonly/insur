@@ -8,7 +8,7 @@ function build_content_json()
   $("div.element").each(function(index) {
     content.push($(this).data("data_content"));
   });
-  $("#debug").text(JSON.stringify(content));
+  $("#debug").html(JSON.stringify(content, null, ' '));
 }
 
 $(document).on('click','#save_and_preview', function() {
@@ -18,7 +18,18 @@ $(document).on('click','#save_and_preview', function() {
 
 $(document).on('click','#save_only', function() {
   build_content_json();
-  // TBD: ajax call to save
+  data = { drag: { content: content}};
+  $.ajax({
+    url: "/drags/"+id,
+    type: "PUT",
+    data: JSON.parse(JSON.stringify(data)),
+    success: function(returnData) {
+      $("#debug").html("received data: " + returnData);
+    },
+    error: function() {
+      $("#debug").append("An error occured in save.");
+    }
+  });
 });
 
 var total_element = 0;
@@ -46,13 +57,13 @@ $(document).on('change','#properties :input', dom_to_data);
 $(document).on('keyup','#properties :input', dom_to_data);
 
 function data_to_dom(data) {
-  $("#debug").text(JSON.stringify(data));
   $("#properties #var_name").val(data.var_name);
   $("#properties #display_name").val(data.display_name);
   $("#properties #mandatory").val(data.mandatory);
   $("#properties #data_type").val(data.data_type);
   $("#properties #default_value").val(data.default_value);
   $("#properties #control").val(data.control);
+  $("#debug").html(JSON.stringify(data, null, ' '));
 }
 
 function dom_to_data() {
@@ -65,5 +76,5 @@ function dom_to_data() {
   data_content.control = $("#properties #control").val();
   $("div.current.element").data("data_content", data_content);
   $("div.current.element").html(data_content.display_name);
-  $("#debug").text(JSON.stringify(data_content));
+  $("#debug").html(JSON.stringify(data_content, null, ' '));
 }

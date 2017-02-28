@@ -1,0 +1,17 @@
+<% if @drag.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@drag.errors.count, "error") %> prohibited this screen from being saved:</h2>
+    <ul>
+    <% @drag.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+Hello world
+<div>
+  <h3> Empty form and dummy html </h3>
+  <span> some content </span>
+</div>
+

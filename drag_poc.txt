@@ -28,12 +28,12 @@ Create element button in UI creates and element and shows the properties in prop
 store all the divs properties in data element of the object - done
 when selection changes update data in the ui form - done
 when data changes update data in the div - done
+create button to take to homepage - done
+when save and save_and_preview called, build the content array for posting - done
+for save just save data - done
 
-when save_and_exit and save_and_preview called, build the content array for posting - ongoing
-update the API to handle save and preview - ongoing
-
-as and when we change the divs and press save_and_preview a dynamic form appears below which is generated from the json
-pressing save_and_exit should post the json and take you to home page
+for save and preview generate html with the new form - ongoing
+form generation code in save_and_preview_html.erb for converting json to html - ongoing
 
 example content:
 {

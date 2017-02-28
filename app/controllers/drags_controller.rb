@@ -1,5 +1,6 @@
 class DragsController < ApplicationController
-  before_action :set_drag, only: [:edit, :update, :destroy]
+  before_action :set_drag, only: [:edit, :update, :destroy, :save_and_preview]
+  layout "empty_layout", only: [:save_and_preview]
 
   # GET /drags/new
   def new
@@ -28,17 +29,8 @@ class DragsController < ApplicationController
   end
 
   # PATCH/PUT /drags/1/save_and_preview
-  # PATCH/PUT /drags/1/save_and_preview.json
   def save_and_preview
-    respond_to do |format|
-      if @drag.update(drag_params)
-        format.html { redirect_to @drag, notice: 'Drag was successfully updated.' }
-        format.json { render :show, status: :ok, location: @drag }
-      else
-        format.html { render :edit }
-        format.json { render json: @drag.errors, status: :unprocessable_entity }
-      end
-    end
+    @drag.update(drag_params)
   end
 
   # PATCH/PUT /drags/1
@@ -47,7 +39,7 @@ class DragsController < ApplicationController
     respond_to do |format|
       if @drag.update(drag_params)
         format.html { redirect_to @drag, notice: 'Drag was successfully updated.' }
-        format.json { render :show, status: :ok, location: @drag }
+        format.json { render status: :ok, json: { status: :ok, id: @drag.id.to_s } }
       else
         format.html { render :edit }
         format.json { render json: @drag.errors, status: :unprocessable_entity }
@@ -73,8 +65,9 @@ class DragsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def drag_params
-      params.require(:drag).tap do |whitelisted|
-        whitelisted[:content] = params[:drag][:content]
+      content = params[:drag].delete(:content)
+      params.require(:drag).permit(:saved).tap do |whitelisted|
+        whitelisted[:content] = content if content
       end
     end
 end

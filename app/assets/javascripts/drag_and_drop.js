@@ -9,22 +9,20 @@ function build_content_json()
     content.push($(this).data("data_content"));
   });
   $("#debug").html(JSON.stringify(content, null, ' '));
+  return { drag: { saved: true, content: content}};
 }
 
 $(document).on('click','#save_and_preview', function() {
-  build_content_json();
-  // TBD: ajax call to save_and_preview
-});
-
-$(document).on('click','#save_only', function() {
-  build_content_json();
-  data = { drag: { content: content}};
+  data = build_content_json();
   $.ajax({
-    url: "/drags/"+id,
+    url: "/drags/"+id+"/save_and_preview",
     type: "PUT",
+    dataType: "HTML",
     data: JSON.parse(JSON.stringify(data)),
     success: function(returnData) {
-      $("#debug").html("received data: " + returnData);
+      $("#debug").append("API succeeded.");
+      console.log(returnData);
+      $("#preview").html(returnData);
     },
     error: function() {
       $("#debug").append("An error occured in save.");
@@ -32,18 +30,48 @@ $(document).on('click','#save_only', function() {
   });
 });
 
+$(document).on('click','#save_only', function() {
+  data = build_content_json();
+  $.ajax({
+    url: "/drags/"+id+".json",
+    type: "PUT",
+    data: JSON.parse(JSON.stringify(data)),
+    success: function(returnData) {
+      $("#debug").append("received data: " + JSON.stringify(returnData));
+    },
+    error: function() {
+      $("#debug").append("An error occured in save.");
+    }
+  });
+});
+
+$(document).on('click','#delete_element', function() {
+  $("div.current.element").remove();
+});
+
+$(document).ready(function() {
+  var data_content = null;
+  Object.keys(content).forEach(function (key) {
+    data_content = content[key];
+    add_new_element(data_content);
+  })
+});
+
 var total_element = 0;
-$(document).on('click','#new_element', function() {
+function add_new_element(data_content) {
   var $div = $("<div/>")
               .attr("class", "ui-widget-content element")
-              .data("data_content", {
-                var_name: total_element, display_name: "Element"+total_element,
-                mandatory: "true", data_type: "integer", default_value: "default", control: "number_field"
-                })
-              .html("Element"+total_element);
-  total_element++;
+              .data("data_content", data_content)
+              .html(data_content.display_name);
   $('#playground').append($div);
   $div.draggable({snap: true});
+  total_element++;
+}
+
+$(document).on('click','#new_element', function() {
+  var data_content = { var_name: total_element, display_name: "Element"+total_element,
+                mandatory: "true", data_type: "integer", default_value: "default", control: "number_field" };
+  add_new_element(data_content);
 });
 
 $(document).on('click',".element", function() {

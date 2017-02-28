@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <%= javascript_include_tag :drag_and_drop %>
   <script type="text/javascript">
-    var content = null;
+    var content = <%= raw(@drag.content.to_json) %>;
     var id = "<%= raw(@drag.id.to_s) %>";
   </script>
 <% end %>
@@ -43,6 +43,7 @@
       <div id="playground_header">
         <%= button_tag "Home", type: :button, id: :home_button %>
         <%= button_tag "New element", type: :button, id: :new_element %>
+        <%= button_tag "Delete element", type: :button, id: :delete_element %>
         <%= button_tag "Save", type: :button, id: :save_only %>
         <%= button_tag "Save and Preview", type: :button, id: :save_and_preview %>
       </div>

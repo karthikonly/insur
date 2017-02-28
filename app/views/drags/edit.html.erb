@@ -2,6 +2,7 @@
   <%= javascript_include_tag :drag_and_drop %>
   <script type="text/javascript">
     var drag = <%= raw(@drag.to_json) %>;
+    var content = null;
   </script>
 <% end %>
 
@@ -40,9 +41,10 @@
     </td>
     <td>
       <div id="playground_header">
+        <%= button_tag "Home", type: :button, id: :home_button %>
         <%= button_tag "New element", type: :button, id: :new_element %>
+        <%= button_tag "Save", type: :button, id: :save_only %>
         <%= button_tag "Save and Preview", type: :button, id: :save_and_preview %>
-        <%= button_tag "Save and Exit", type: :button, id: :save_and_exit %>
       </div>
       <div id="playground"/>
     </td>

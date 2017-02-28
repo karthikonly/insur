@@ -1,3 +1,26 @@
+$(document).on('click','#home_button', function() {
+  window.location.href = "/";
+});
+
+function build_content_json()
+{
+  content = [];
+  $("div.element").each(function(index) {
+    content.push($(this).data("data_content"));
+  });
+  $("#debug").text(JSON.stringify(content));
+}
+
+$(document).on('click','#save_and_preview', function() {
+  build_content_json();
+  // TBD: ajax call to save_and_preview
+});
+
+$(document).on('click','#save_only', function() {
+  build_content_json();
+  // TBD: ajax call to save
+});
+
 var total_element = 0;
 $(document).on('click','#new_element', function() {
   var $div = $("<div/>")
@@ -41,5 +64,6 @@ function dom_to_data() {
   data_content.default_value = $("#properties #default_value").val();
   data_content.control = $("#properties #control").val();
   $("div.current.element").data("data_content", data_content);
+  $("div.current.element").html(data_content.display_name);
   $("#debug").text(JSON.stringify(data_content));
 }

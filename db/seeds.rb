@@ -13,6 +13,12 @@ User_list = [
     password: "password",
     password_confirmation: "password",
     role: User::ADMIN_ROLE
+  },
+  {
+    name: "Demo User",
+    email: "demo@user.net",
+    password: "password",
+    password_confirmation: "password"
   }
 ]
 

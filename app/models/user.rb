@@ -21,7 +21,6 @@ class User
 
   # validation
   validates_presence_of       :name, :email
-  validates_uniqueness_of     :email, :case_sensitive => false
 
   def admin?
     return self.role == ADMIN_ROLE

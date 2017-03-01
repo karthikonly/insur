@@ -135,7 +135,7 @@ development:
 test:
   clients:
     default:
-      database: loc_test
+      database: insurance_test
       hosts:
         - localhost:27017
       options:

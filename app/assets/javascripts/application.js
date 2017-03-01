@@ -16,5 +16,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap-treeview.min
+//= require bootstrap-datepicker
 //= require_tree ./preloaded
-
+$(document).ready(function() {
+    $("[data-behaviour~='datepicker']").datepicker();
+});

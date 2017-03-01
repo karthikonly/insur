@@ -28,7 +28,7 @@
         <% when 'string' %>
           <%= text_field_tag element[:var_name], element[:default_value] %>
         <% when 'date' %>
-          <%= text_field_tag element[:var_name], element[:default_value] %>
+          <%= text_field_tag element[:var_name], element[:default_value], "data-behaviour": 'datepicker' %>
         <% when 'boolean' %>
           <%= select_tag element[:var_name], options_for_select(Applicant::BOOLEAN_SELECT_CHOICES, element[:default_value]) %>
         <% else %>

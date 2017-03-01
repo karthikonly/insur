@@ -30,7 +30,7 @@
   </div>
   <div class="field">
     <%= f.label "Date of Birth" %>
-    <!-- <%= f.text_field :dob %> -->
+    <%= f.text_field :dob, "data-behaviour": 'datepicker' %>
   </div>
   <div class="field">
     <%= f.label :gender %>
@@ -50,11 +50,11 @@
   </div>
   <div class="field">
     <%= f.label :license_date %>
-    <!-- <%= f.text_field :license_date %> -->
+    <%= f.text_field :license_date, "data-behaviour": 'datepicker' %>
   </div>
   <div class="field">
     <%= f.label :license_valid_till %>
-    <!-- <%= f.text_field :license_valid_till %> -->
+    <%= f.text_field :license_valid_till, "data-behaviour": 'datepicker' %>
   </div>
   <div class="actions">
     <%= f.submit %>

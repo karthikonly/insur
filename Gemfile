@@ -19,6 +19,7 @@ gem 'devise'
 gem 'bson_ext'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-datepicker-rails'
 gem 'autoprefixer-rails'
 gem 'bcrypt', '~> 3.1.7'
 

@@ -32,22 +32,21 @@ US ref db of make and model and vehicle model - done
 
 create drag and drop playground prototype for screens, rules, customizations - done, poc complete
 
-fix production css/js assets precompile issue - bug, ongoing
-rule engine evaluate wongi - waiting for sample rules
+fix production css/js assets precompile issue - done
+date picker fix (change in all screens) - done
 
+rule engine evaluate wongi - ongoing
 
-later:
 quotes accidents & violations screen
 quotes coverage screen
 quotes summary screen
 
-date picker fix (change in all screens) - bug
+later:
 add reference to vehicle in new_insur_vehicle form/screen - feature
-
 
 deployment:
 setup capistrano for auto deployment - done, running only in mac/linux
-investigate capistrano running in windows -
+investigate capistrano deployment from windows - later
 
 documentation:
 create a document describing all the steps for auto deploy

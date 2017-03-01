@@ -20,9 +20,9 @@ $(document).on('click','#save_and_preview', function() {
     dataType: "HTML",
     data: JSON.parse(JSON.stringify(data)),
     success: function(returnData) {
-      $("#debug").append("API succeeded.");
-      console.log(returnData);
+      $("#debug").append("API succeeded:"+returnData);
       $("#preview").html(returnData);
+      $("[data-behaviour~='datepicker']").datepicker();
     },
     error: function() {
       $("#debug").append("An error occured in save.");

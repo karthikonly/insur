@@ -15,6 +15,14 @@
   <%= @quote.state %>
 </p>
 <p>
+  <strong>Duration of No Incidents:</strong>
+  <%= @quote.non_violence_duration %>
+</p>
+<p>
+  <strong>Prior Accident Forgiveness:</strong>
+  <%= @quote.prior_incident_forgiveness %>
+</p>
+<p>
   <strong>Applicant Information:</strong>
   <%= @quote.applicant.try(:applicant_info) %>
 </p>

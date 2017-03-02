@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       post  'create_driver'
       get   'new_insur_vehicle'
       post  'create_insur_vehicle'
+      get   'new_incident'
+      post  'create_incident'
     end
   end
 end

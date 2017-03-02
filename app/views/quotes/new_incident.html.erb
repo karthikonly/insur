@@ -1,0 +1,24 @@
+<%= form_for(@quote, url: create_incident_quote_path(@quote), method: :post) do |f| %>
+  <% if @quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+      <ul>
+      <% @quote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Effective Date of policy" %>&nbsp;
+    <%= f.select :non_violence_duration, options_for_select(Quote::NON_VIOLENCE_DURATION_OPTIONS) %>
+  </div>
+  <div class="field">
+    <%= f.label "Select the product line" %>&nbsp;
+    <%= f.select :prior_incident_forgiveness, options_for_select(Applicant::BOOLEAN_SELECT_CHOICES) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

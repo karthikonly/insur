@@ -1,7 +1,8 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant, 
-    :new_driver, :create_driver, :new_insur_vehicle, :create_insur_vehicle]
-  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :new_insur_vehicle, :edit]
+    :new_driver, :create_driver, :new_insur_vehicle, :create_insur_vehicle, :new_incident, :create_incident]
+  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :new_insur_vehicle, :new_incident, :edit, 
+                    :create, :create_applicant, :create_driver, :create_insur_vehicle, :create_incident, :update]
 
   # GET /quotes
   # GET /quotes.json
@@ -94,10 +95,27 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to :root, notice: 'Insured Vehicle was successfully created.' }
+        format.html { redirect_to new_incident_quote_path(@quote), notice: 'Insured Vehicle was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new_insur_vehicle }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /quotes/:id/new_incident
+  def new_incident
+  end
+
+  # POST /quotes/:id/create_incident
+  def create_incident
+    respond_to do |format|
+    if @quote.update(quote_params)
+        format.html { redirect_to :root, notice: 'Incident Reports was successfully created.' }
+        format.json { render :show, status: :created, location: @quote }
+      else
+        format.html { render :new_incident }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -144,7 +162,7 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:agent_code, :effective_date, :line, :state)
+      params.require(:quote).permit(:agent_code, :effective_date, :line, :state, :non_violence_duration, :prior_incident_forgiveness)
     end
 
     def applicant_params

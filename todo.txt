@@ -20,29 +20,47 @@ see screens in excel and break into tasks - done
 province model for US states - done
 
 :quotes new screen - done
-quote model basic - done
-reference user_id in quote model - done
-add roles in user model and admin should list all quotes - done
-change homescreen to list all quotes for the user and generate new quote - done
+-quote model basic - done
+-reference user_id in quote model - done
+-add roles in user model and admin should list all quotes - done
+-change homescreen to list all quotes for the user and generate new quote - done
 :quotes applicant screen - done
 :quotes drivers screen - done
 
 :quotes vehicles screen - done
-US ref db of make and model and vehicle model - done
+-US ref db of make and model and vehicle model - done
 
 create drag and drop playground prototype for screens, rules, customizations - done, poc complete
-
 fix production css/js assets precompile issue - done
 date picker fix (change in all screens) - done
 
-rule engine evaluate wongi - ongoing
+:quotes accidents & violations screen - done
+- number of years free from at fault accidents or violations - done
+- prior company accident forgiveness - done
 
-quotes accidents & violations screen
-quotes coverage screen
-quotes summary screen
+:quotes coverage screen - ongoing
+- coverage type
+- bodily injury
+- property damage
+- medical payments
+- uninsured motorist bodily injury
+- physical damage comprehensive
+- physical collision
+- uninsured motorist property damage
+- towing & labor
+- transportation Exp
+
+:quotes summary screen
+- detailed calculation on each section of the excel given
+
+rule engine prototype wongi - ongoing
 
 later:
 add reference to vehicle in new_insur_vehicle form/screen - feature
+create agent code model and plugin to creation/applicant information
+prototype "+add driver, +add vehicle, +add violations" aggregation UI
+add reference to individual accident/violations in accidents and violations screen
+update coverage screen for each car
 
 deployment:
 setup capistrano for auto deployment - done, running only in mac/linux

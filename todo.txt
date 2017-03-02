@@ -38,7 +38,7 @@ date picker fix (change in all screens) - done
 - number of years free from at fault accidents or violations - done
 - prior company accident forgiveness - done
 
-:quotes coverage screen - ongoing
+:quotes coverage screen - all fields - done
 - coverage type
 - bodily injury
 - property damage
@@ -50,10 +50,10 @@ date picker fix (change in all screens) - done
 - towing & labor
 - transportation Exp
 
+rule engine prototype wongi - ongoing
+
 :quotes summary screen
 - detailed calculation on each section of the excel given
-
-rule engine prototype wongi - ongoing
 
 later:
 add reference to vehicle in new_insur_vehicle form/screen - feature

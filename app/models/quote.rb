@@ -8,6 +8,7 @@ class Quote
   embeds_one  :applicant
   embeds_one  :driver
   embeds_one  :insur_vehicle
+  embeds_one  :coverage
 
   NON_VIOLENCE_DURATION_OPTIONS = [["Less than 1 year", "<1yr"], ["1 to 3 years", "1-3yrs"], ["Greater than 3 years", ">3yrs"]].freeze
 

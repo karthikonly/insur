@@ -1,0 +1,60 @@
+<%= form_for(@coverage, url: create_coverage_quote_path(@quote)) do |f| %>
+  <% if @coverage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coverage.errors.count, "error") %> prohibited this Coverage Information from being saved:</h2>
+      <ul>
+      <% @coverage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="heading">
+    Coverage Information
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :coverage_type %>
+    <%= f.select :coverage_type, options_for_select(Coverage::COVERAGE_TYPE_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :bodily_injury %>
+    <%= f.select :bodily_injury, options_for_select(Coverage::BODILY_INJURY_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :property_damage %>
+    <%= f.select :property_damage, options_for_select(Coverage::PROPERTY_DAMAGE_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :medical_payments %>
+    <%= f.select :medical_payments, options_for_select(Coverage::MEDICAL_PAYMENTS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :uninsured_bodily_injury %>
+    <%= f.select :uninsured_bodily_injury, options_for_select(Coverage::UNINSURED_BODILY_INJURY_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :physical_comprehensive %>
+    <%= f.select :physical_comprehensive, options_for_select(Coverage::PHYSICAL_COMPREHENSIVE_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :physical_collision %>
+    <%= f.select :physical_collision, options_for_select(Coverage::PHYSICAL_COLLISION_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :uninsured_property_damage %>
+    <%= f.select :uninsured_property_damage, options_for_select(Coverage::UNINSURED_PROPERTY_DAMAGE_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :towing_labor %>
+    <%= f.select :towing_labor, options_for_select(Coverage::TOWING_LABOR_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="field">
+    <%= f.label :transportation %>
+    <%= f.select :transportation, options_for_select(Coverage::TRANSPORTATION_OPTIONS.map {|x| [x,x]}) %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Coverages" %>
+  </div>
+<% end %>

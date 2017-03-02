@@ -1,8 +1,12 @@
 class QuotesController < ApplicationController
+
   before_action :set_quote, only: [:show, :edit, :update, :destroy, :new_applicant, :create_applicant, 
-    :new_driver, :create_driver, :new_insur_vehicle, :create_insur_vehicle, :new_incident, :create_incident]
-  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :new_insur_vehicle, :new_incident, :edit, 
-                    :create, :create_applicant, :create_driver, :create_insur_vehicle, :create_incident, :update]
+    :new_driver, :create_driver, :new_insur_vehicle, :create_insur_vehicle, :new_incident, :create_incident,
+    :new_coverage, :create_coverage]
+
+  before_action :set_provinces, only: [:new, :new_applicant, :new_driver, :new_insur_vehicle, :new_incident, 
+    :new_coverage, :edit, :create, :create_applicant, :create_driver, :create_insur_vehicle, :create_incident, 
+    :create_coverage, :update]
 
   # GET /quotes
   # GET /quotes.json
@@ -112,10 +116,31 @@ class QuotesController < ApplicationController
   def create_incident
     respond_to do |format|
     if @quote.update(quote_params)
-        format.html { redirect_to :root, notice: 'Incident Reports was successfully created.' }
+        format.html { redirect_to new_coverage_quote_path(@quote), notice: 'Incident Reports was successfully created.' }
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new_incident }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /quotes/:id/new_incident
+  def new_coverage
+    @coverage = Coverage.new
+  end
+
+  # POST /quotes/:id/create_incident
+  def create_coverage
+    @coverage = Coverage.new(coverage_params)
+    @quote.coverage = @coverage
+
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to :root, notice: 'Coverage values were successfully added.' }
+        format.json { render :show, status: :created, location: @quote }
+      else
+        format.html { render :new_coverage }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -181,5 +206,10 @@ class QuotesController < ApplicationController
 
     def insur_vehicle_params
       params.require(:insur_vehicle).permit(:vin, :type, :usage, :annual_mileage, :anti_theft, :vehicle_id)
+    end
+
+    def coverage_params
+      params.require(:coverage).permit(:coverage_type, :bodily_injury, :property_damage, :medical_payments, :uninsured_bodily_injury,
+        :physical_comprehensive, :physical_collision, :uninsured_property_damage, :towing_labor, :transportation)
     end
 end
